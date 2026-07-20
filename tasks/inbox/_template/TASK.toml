@@ -1,0 +1,16 @@
+[task]
+title = "Görev başlığı"
+request = "Yapılması gereken iş"
+project = ""
+priority = "P2"
+department = "auto"
+agent = "auto"
+owner = "@korrayt"
+deadline = ""
+auto_execute = false
+requires_owner_approval = false
+
+[context]
+expected_output = ""
+acceptance_criteria = ""
+constraints = ""

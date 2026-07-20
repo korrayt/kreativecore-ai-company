@@ -1,0 +1,20 @@
+[project]
+name = "Proje adı"
+objective = "Bu proje hangi sonucu üretmeli?"
+desired_outcome = "Bittiğinde somut olarak ne var olacak?"
+type = "mixed"
+priority = "P2"
+stage = "idea"
+owner = "@korrayt"
+deadline = ""
+language = "tr"
+departments = ["auto"]
+auto_execute = false
+requires_owner_approval = false
+
+[context]
+target_user = ""
+problem = ""
+constraints = ""
+success_signal = ""
+budget_note = ""
