@@ -301,7 +301,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -m engine.intake . --sync-issues
+          python scripts/company_orchestrator.py .
+          python scripts/sync_company_issues.py .
 
           git config user.name "github-actions[bot]"
           git config user.email \
