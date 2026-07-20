@@ -1,0 +1,2240 @@
+bugün 11:01
+4. Asamada kalıyor app kısmında coderabit gorunuyor chat gpt gorunmuor.
+
+Bilgisayar buldm ordan açtm. Bu durumda. 
+50s düşündü
+
+Kontrol ettim. Repo başarıyla okunuyor ve hesabın repo üzerinde admin/push yetkisine sahip görünüyor. Fakat ana dala dokunmadan geçici bir test dalı oluşturmayı denediğimde GitHub yine:
+
+403 — Resource not accessible by integration
+
+hatası verdi.
+
+Yani sorun senin repo seçmemen veya GitHub hesabındaki yetkin değil. Bu sohbet içindeki ChatGPT GitHub bağlantısı okuma yapabiliyor ama branch/commit oluşturma yetkisi vermiyor. Ayarlarda “Tüm işlemlere izin ver” seçili olsa da bu, bağlantının teknik GitHub izinlerini yükseltmiyor.
+
+Bu durumda iki güvenli yol var:
+
+Codex üzerinden repoyu açıp değişiklikleri orada uygulatmak.
+Bilgisayarda GitHub’a tarayıcıyla giriş yapıp gh auth login üzerinden yetkilendirmek; sonra hazırladığım komutlarla temizliği yapmak.
+
+Ayrıca az önce gönderdiğin github_pat_... anahtarını GitHub’dan mutlaka Revoke/Delete et; onu burada kullanmak güvenli değil.
+
+bunu  bi şekilde çözebilmemiz lazım mobilden kontrol edebilmek  istiyorm pc olmadan. suan baskasının bilgisayarından kullanıyorm
+1m 20s düşündü
+
+Haklısın; bilgisayara bağlı yaşamadan bunu yönetebilmen lazım. Çözüm ChatGPT bağlantısına yazma yetkisi aramak değil, GitHub’ı telefon merkezli çalışacak biçimde kurmak.
+
+Standart ChatGPT–GitHub bağlantısı resmi olarak okuma, arama ve analiz amaçlı; buradan commit veya PR gönderilemiyor. Kod yazıp GitHub’a göndermek için Codex ya da GitHub’ın kendi geliştirme ortamı gerekiyor.
+
+Sana uygun sistem
+1. GitHub Mobile
+
+Telefona resmi GitHub uygulamasını kur. Buradan:
+
+PR ve issue’ları takip edebilirsin.
+Yorumları okuyup yanıtlayabilirsin.
+Bildirimleri yönetebilirsin.
+PR içindeki dosyalarda küçük düzenlemeler yapabilirsin.
+2. Tam geliştirme için Codespaces
+
+Telefonun Chrome veya Safari tarayıcısından:
+
+korrayt/itsus.safe.space reposuna gir.
+Yeşil Code düğmesine bas.
+Codespaces sekmesini aç.
+Create codespace on sonerkoraytasan seç.
+
+Böylece GitHub sana bulutta çalışan tam bir bilgisayar ve terminal açıyor. Telefon, tablet veya herhangi bir tarayıcı yeterli; kodlar ve işlem gücü bulutta kalıyor.
+
+3. Küçük işler için github.dev
+
+Repo adresindeki:
+
+github.com
+
+kısmını:
+
+github.dev
+
+olarak değiştirince tarayıcıda hafif bir VS Code açılır. Dosya düzenleyip commit atabilirsin; fakat terminal ve uygulama çalıştırma yoktur.
+
+Bir kere kurup sonra telefondan kullanacağımız yapı
+
+Bugün bu ödünç bilgisayardan veya Codespaces üzerinden:
+
+Sağlam bir .gitignore ekleyeceğiz.
+PR #13’teki yanlış node_modules dosyalarını temizleyeceğiz.
+Repoya Mobile Control adlı güvenli bir GitHub Actions workflow’u ekleyeceğiz.
+Workflow içinde yalnızca önceden tanımlı işlemler olacak:
+testleri çalıştır
+projeyi derle
+PR dalını kontrol et
+bağımlılık artıklarını temizle
+deploy işlemini çalıştır
+
+Sonrasında telefondan yalnızca:
+
+GitHub → Actions → Mobile Control → Run workflow
+
+diyerek işlemleri başlatabileceksin. Rastgele terminal komutu çalıştıran tehlikeli bir sistem değil; yalnızca bizim tanımladığımız güvenli görevler olacak.
+
+Şimdi ödünç bilgisayarda repo sayfasını açıp Code → Codespaces → Create codespace adımına geçelim. Açılan ekranın görüntüsünü gönder; oradan PR temizliğini ve mobil kontrol sistemini birlikte kuracağız. Ayrıca sohbette paylaştığın eski tokenın GitHub’dan iptal edilmiş olduğundan emin ol.
+
+orada da codspace kullanım limitine ulasılmıs... simdi soyle bisey yapalım daha once yukleyemedigim mobilde olduum icin.... yukleyemedigim seyleri sen otomasyonu olusturacak sekilde tek bi zip olarak ver... 
+suan pcdeyim yukleyim sonra mobilden devam ederim...
+4m 15s düşündü
+
+Tamamdır, paketi hazırladım. Mevcut itsus.safe.space yapısına ve npm run check sistemine göre uyarladım.
+
+IT’S US Mobile Control Kit’i indir
+
+ZIP’in içinde şunlar var:
+
+Mobil cihazdan çalıştırılabilen Mobile Control workflow’u
+node_modules ve önbellek dosyalarının tekrar yüklenmesini engelleyen Repository Guard
+PR #13’ü temizleyip kontrol eden otomasyon
+Güvenli base-branch birleştirme sistemi
+.gitignore
+AI/Copilot çalışma kurallarını anlatan AGENTS.md
+Türkçe kurulum ve kullanım dosyası
+Şimdi bilgisayarda
+ZIP’i çıkart.
+İçindeki UPLOAD_TO_REPO klasörünü aç.
+GitHub’da korrayt/itsus.safe.space reposuna gir.
+Dal olarak sonerkoraytasan seç.
+Add file → Upload files de.
+UPLOAD_TO_REPO klasörünün kendisini değil, içindeki bütün dosya ve klasörleri sürükleyip bırak.
+Commit mesajı:
+chore: add mobile repository control
+
+GitHub web arayüzü dosya ve klasörleri birlikte sürükleyerek yüklemeyi destekliyor. ZIP’i doğrudan yükleme; GitHub ZIP’i otomatik açmaz.
+
+Ardından repoda:
+
+Settings → Actions → General → Workflow permissions → Read and write permissions → Save
+
+ayarını yap. Bu, otomasyonun PR dalına temizlik commit’i gönderebilmesi için gerekli.
+
+Telefondan ilk çalıştırma
+
+Telefon tarayıcısından:
+
+Repo → Actions → Mobile Control → Run workflow
+
+Şunları seç:
+
+Operation: clean-and-verify
+Target branch: copilot/implement-teleportation-stations
+Base branch: sonerkoraytasan
+Remove dist: false
+Confirm: RUN
+
+Bu işlem PR #13’teki takip edilen node_modules ve önbellek dosyalarını kaldıracak, temizliği aynı dala gönderecek ve bütün testleri çalıştıracak. Manuel çalıştırma düğmesinin görünmesi için workflow’un varsayılan dalda bulunması gerekiyor; bu yüzden dosyaları sonerkoraytasan dalına yüklüyoruz.
+
+Sohbette paylaşılan eski GitHub tokenını da iptal edilmiş bırak; bu otomasyon kişisel token istemiyor. 
+
+tamam simdi kreativecore için hazırladığımız dosyaya ve repoya doneli mi daha once onun icin bi zip hazırlamıstın yukleyememistim onun workflow vs herseyinin hazır oldugu halini yukleyelim mi
+3m 8s düşündü
+Analiz duraklatıldı
+
+Tamam canım, Kreative Core paketini güncelleyip yeniden hazırladım. Bu sürüm önceki ZIP’ten daha kapsamlı; doğrudan mevcut korrayt/Kreative-Core reposuna göre düzenlendi.
+
+Kreative Core Company OS paketini indir
+
+Paket toplam 49 dosya içeriyor ve doğrulama testinden geçti. Mevcut README.md dosyasını ezmiyor; README’de bağlantısı verilmiş fakat eksik olan Company OS belgelerini tamamlıyor.
+
+İçinde şunlar hazır:
+
+Kreative Core şirket işletim sistemi
+Organizasyon ve görev dağılımı
+Ürün portföyü ve roadmap
+Vision, CutMate ve Transcribe TR ürün dosyaları
+Ödeme mimarisi
+Risk ve karar kayıtları
+Finans, güvenlik, marketing ve release şablonları
+Copilot ve özel AI ajan talimatları
+CodeRabbit yapılandırması
+Issue ve PR şablonları
+Mobile Company Control workflow’u
+Gizli anahtar, bozuk bağlantı ve eksik dosya kontrolü yapan CI sistemi
+
+CodeRabbit yapılandırması repo kökündeki .coderabbit.yaml üzerinden çalışıyor ve taslak olmayan PR’ları otomatik inceleyecek şekilde ayarlandı.
+
+Şimdi yükleme
+ZIP’i çıkart.
+İçindeki UPLOAD_TO_REPO klasörünü aç.
+GitHub’da korrayt/Kreative-Core reposuna gir.
+Dal olarak Soner-Koray-Taşan seç.
+Add file → Upload files de.
+UPLOAD_TO_REPO klasörünün kendisini değil, içindeki bütün dosya ve klasörleri sürükleyip bırak.
+Commit mesajı:
+chore: complete Kreative Core company operating system
+
+Ardından:
+
+Settings → Actions → General → Workflow permissions → Read and write permissions → Save
+
+Bu izin, workflow’un kişisel token kullanmadan GitHub’ın geçici ve yalnızca repo kapsamındaki GITHUB_TOKEN yetkisiyle issue ve label oluşturmasını sağlar.
+
+İlk mobil çalıştırma
+
+Dosyalar yüklendikten sonra:
+
+Actions → Mobile Company Control → Run workflow
+
+İlk olarak:
+
+Operation: bootstrap-labels
+Confirm: RUN
+
+çalıştır.
+
+Sonra:
+
+Operation: weekly-review
+Confirm: RUN
+
+çalıştırınca şirketin haftalık değerlendirme issue’su otomatik açılacak. Sonrasında telefondan aynı menüyle:
+
+ürün önerisi,
+release hazırlığı,
+risk incelemesi,
+haftalık şirket toplantısı,
+Company OS denetimi
+
+başlatabileceksin. Manuel workflow’un Actions ekranında görünmesi için workflow dosyasının varsayılan dalda bulunması gerekiyor; bu nedenle yüklemeyi Soner-Koray-Taşan dalına yapıyoruz.
+
+kreativecore-company-os(1).zip
+Zip Arşivi
+kreativecore-company-complete(1).zip
+Zip Arşivi
+bu dosyaları buldum bu arada daha onceki konusmamızdan
+1m 18s düşündü
+
+İyi ki bulmuşsun; eski dosyaları karşılaştırdım. Özellikle kreativecore-company-complete içinde daha önce hazırladığımız ayrıntılı 16 kişilik AI çalışan kadrosu ve ek şirket workflow’ları vardı. Az önceki paketteyse mobil kontrol, ürün dosyaları, güvenlik ve doğrulama sistemi daha güçlüydü.
+
+İkisini birleştirip çakışmaları temizlediğim nihai paket burada:
+
+Kreative Core Company Final Merged ZIP’i indir
+
+Bu sürümde:
+
+16 uzman AI çalışan tanımı
+5 GitHub Actions workflow’u
+Mobil şirket kontrol paneli
+Otomatik çalışan yönlendirme
+Pazartesi şirket işletim döngüsü
+Cuma haftalık durum raporu
+Company OS doğrulama ve secret kontrolü
+Ürün, finans, pazarlama, güvenlik ve release yapısı
+Issue/PR şablonları
+Vision, CutMate ve Transcribe TR ürün dosyaları
+
+var. Toplam 66 dosya içeriyor; YAML, Python, yerel bağlantı ve yaygın gizli anahtar kontrollerinden geçti. Workflow’larda güncel resmi ana sürümler olan actions/checkout@v6 ve actions/github-script@v9 kullanıldı.
+
+Bunu yükle
+
+Eski iki ZIP’i ayrıca yükleme. Yalnızca bu son paketi kullan:
+
+ZIP’i çıkart.
+UPLOAD_TO_REPO klasörünü aç.
+GitHub’da korrayt/Kreative-Core reposuna gir.
+Soner-Koray-Taşan dalını seç.
+Add file → Upload files
+Klasörün içindeki bütün dosyaları sürükle.
+Commit mesajı:
+chore: install final Kreative Core Company OS
+
+Sonra:
+
+Settings → Actions → General → Workflow permissions → Read and write permissions → Save
+
+İlk çalıştırma sırası:
+
+Actions → Mobile Company Control
+Operation: bootstrap-labels
+Confirm: RUN
+
+Ardından:
+
+Actions → Kreative Core Company OS Dispatcher
+Run workflow
+
+Bu ikinci işlem bütün ayrıntılı çalışan etiketlerini oluşturup ilk Company Manager operating cycle görevini açacak. Gerçek finans, müşteri veya şirket içi bilgi eklemeden önce repoyu Private yapmak daha doğru olur. 
+
+amacım su.... 
+repo  bi sirket gibi calissin... bi tasks klasorumuz içerisinde de  projeler klasörümüz olsun... o klasorun içerisine yüklediğim her klasör yeni bir proje olarak kabul edilsin... repo içerisinde...
+bi analist olsun... proje olarak ele alınsın yol haritası belirlensin...
+bu otomasyon nasıl işleyecekse bunun için gerekli tüm departmanların gorevini yapacak bi code agent olsun reponun içerisinde...
+
+ben yeni gorevleri task klasorunun içerisine 
+senin onerecegin bi formatta yukleyim... otomasyon gunluk olarak bu klasoru kontrol ettsin gerekli gorev dagılımını yapsın...
+
+içerisinde
+
+bu departmanları kapsayacak bu orevleri yapabilecek ayrı agentlar olsun 
+
+ 1. Yönetim ve Strateji
+
+* Kurucu ekip / CEO Ofisi
+* Genel Yönetim
+* Strateji ve İş Planlama
+* Operasyon Yönetimi
+* Program / Portföy Yönetimi
+* Proje Yönetimi
+* İş Geliştirme
+* Kurumsal Gelişim
+* Ortaklıklar ve Stratejik İş Birlikleri
+* Yönetim Kurulu İlişkileri
+* Yatırımcı İlişkileri
+* OKR / Performans Yönetimi
+
+2. Ürün
+
+* Ürün Yönetimi
+* Ürün Stratejisi
+* Ürün Operasyonları
+* Ürün Analitiği
+* Ürün Araştırması
+* Kullanıcı Araştırması
+* Ürün Tasarımı
+* UX Tasarımı
+* UI Tasarımı
+* UX Writing / İçerik Tasarımı
+* Prototipleme
+* Ürün Büyümesi / Product Growth
+* Ürün Pazarlaması
+* Monetizasyon ve Fiyatlandırma
+
+Roller: Product Manager, Product Owner, Product Analyst, UX Researcher, Product Designer.
+
+3. Yazılım ve Teknoloji
+
+* Yazılım Geliştirme
+* Frontend
+* Backend
+* Mobil Uygulama
+* Full-stack
+* Masaüstü Uygulama
+* API ve Entegrasyon
+* Sistem Mimarisi
+* Platform Engineering
+* DevOps
+* Cloud / Bulut Sistemleri
+* Site Reliability Engineering
+* Veritabanı Yönetimi
+* Altyapı ve Ağ Sistemleri
+* İç Araçlar / Developer Tools
+* Teknik Dokümantasyon
+* Açık Kaynak Yönetimi
+* Teknik Destek
+
+Roller: Coder, Software Engineer, Architect, DevOps Engineer, Technical Lead, CTO.
+
+4. Yapay Zekâ, Veri ve Analitik
+
+* Veri Analitiği
+* İş Zekâsı
+* Veri Bilimi
+* Veri Mühendisliği
+* Makine Öğrenmesi
+* Yapay Zekâ Mühendisliği
+* Generative AI / LLM
+* Model Eğitimi
+* Model Değerlendirme
+* Prompt Engineering
+* MLOps
+* Veri Etiketleme
+* Veri Kalitesi
+* Karar Bilimi
+* Tahminleme ve Optimizasyon
+* Deney / A-B Testleri
+* Raporlama ve Dashboard
+
+Roller: Data Analyst, Business Analyst, Data Scientist, ML Engineer, AI Researcher.
+
+5. Ar-Ge ve İnovasyon
+
+* Araştırma ve Geliştirme
+* Temel Araştırma
+* Uygulamalı Araştırma
+* İnovasyon Yönetimi
+* Teknoloji Araştırması
+* Prototip Laboratuvarı
+* Yeni Ürün Geliştirme
+* Patent ve Fikri Mülkiyet
+* Akademik İş Birlikleri
+* Hibe ve Teşvik Projeleri
+* Gelecek Araştırmaları / Foresight
+* Deneysel Projeler
+
+6. Tasarım ve Kreatif
+
+* Marka Tasarımı
+* Grafik Tasarım
+* Görsel İletişim
+* Motion Design
+* 3D Tasarım
+* Video Prodüksiyon
+* Kurgu ve Post-prodüksiyon
+* Fotoğraf
+* Ses Tasarımı
+* Müzik Prodüksiyonu
+* Kreatif Strateji
+* Sanat Yönetimi
+* Metin Yazarlığı
+* İçerik Tasarımı
+* Deneyim Tasarımı
+* Oyun Tasarımı
+
+7. Kalite ve Test
+
+* Kalite Güvence / QA
+* Manuel Test
+* Test Otomasyonu
+* Performans Testleri
+* Güvenlik Testleri
+* Kullanılabilirlik Testleri
+* Cihaz / Tarayıcı Uyumluluğu
+* Sürüm Yönetimi
+* Hata Yönetimi
+* Kalite Standartları
+* Süreç Kalitesi
+
+8. Siber Güvenlik ve Güven
+
+* Bilgi Güvenliği
+* Uygulama Güvenliği
+* Altyapı Güvenliği
+* Güvenlik Operasyonları
+* Kimlik ve Erişim Yönetimi
+* Dolandırıcılık Önleme
+* Risk Yönetimi
+* Gizlilik
+* Veri Koruma
+* Güven ve Emniyet / Trust & Safety
+* İçerik Moderasyonu
+* Güvenlik Denetimleri
+* İş Sürekliliği
+* Felaket Kurtarma
+
+9. Pazarlama
+
+* Marka Yönetimi
+* Pazarlama Stratejisi
+* Dijital Pazarlama
+* Performans Pazarlaması
+* Growth Marketing
+* Sosyal Medya
+* İçerik Pazarlaması
+* SEO
+* ASO
+* E-posta Pazarlaması
+* Influencer Pazarlaması
+* Topluluk Pazarlaması
+* Etkinlik ve Sponsorluk
+* Medya Planlama
+* Reklam ve Kreatif
+* Kampanya Yönetimi
+* Pazarlama Analitiği
+* Müşteri İçgörüleri
+* Ürün Pazarlaması
+* İletişim ve PR
+
+10. Satış
+
+* Satış Stratejisi
+* B2B Satış
+* B2C Satış
+* Kurumsal Satış
+* Saha Satışı
+* İç Satış
+* Kanal Satışları
+* Bayi ve Distribütör Yönetimi
+* Satış Operasyonları
+* Satış Geliştirme / SDR
+* Teklif ve İhale Yönetimi
+* Çözüm Satışları
+* Presales
+* Satış Mühendisliği
+* Gelir Operasyonları / RevOps
+* CRM Yönetimi
+* Satış Analitiği
+
+11. Müşteri Departmanları
+
+* Müşteri Deneyimi
+* Müşteri Başarısı
+* Müşteri Destek
+* Teknik Destek
+* Çağrı Merkezi
+* Onboarding
+* Eğitim ve Akademi
+* Hesap Yönetimi
+* Key Account Management
+* Müşteri Operasyonları
+* Şikâyet Yönetimi
+* Sadakat ve Tutundurma
+* Churn Önleme
+* Müşteri Topluluğu
+* Voice of Customer
+
+12. Operasyon
+
+* İş Operasyonları
+* Ürün Operasyonları
+* Saha Operasyonları
+* Hizmet Operasyonları
+* Süreç Yönetimi
+* Süreç İyileştirme
+* Otomasyon
+* Kapasite Planlama
+* Talep Planlama
+* Tedarik Zinciri
+* Satın Alma
+* Lojistik
+* Depo Yönetimi
+* Envanter Yönetimi
+* Üretim Operasyonları
+* Kurulum ve Bakım
+* Tesis Yönetimi
+* İş Sürekliliği
+
+13. Finans
+
+* Finansal Planlama ve Analiz
+* Muhasebe
+* Bütçe ve Raporlama
+* Nakit Akışı Yönetimi
+* Hazine
+* Vergi
+* Maliyet Muhasebesi
+* Gelir Muhasebesi
+* Faturalama ve Tahsilat
+* Ödeme Operasyonları
+* Finansal Kontrol
+* İç Denetim
+* Yatırım Analizi
+* Fonlama ve Sermaye Yönetimi
+* Birleşme ve Satın Alma
+* Finansal Risk Yönetimi
+
+14. İnsan ve Kültür
+
+* İnsan Kaynakları
+* İşe Alım / Talent Acquisition
+* Çalışan Deneyimi
+* Organizasyonel Gelişim
+* Öğrenme ve Gelişim
+* Performans Yönetimi
+* Ücret ve Yan Haklar
+* Kariyer ve Yetenek Yönetimi
+* Kültür ve İç İletişim
+* İK Operasyonları
+* Bordro ve Özlük
+* İşveren Markası
+* Çeşitlilik ve Kapsayıcılık
+* Çalışan İlişkileri
+* İş Sağlığı ve Güvenliği
+
+15. Hukuk ve Uyum
+
+* Hukuk
+* Sözleşme Yönetimi
+* Ticaret Hukuku
+* İş Hukuku
+* Fikri Mülkiyet
+* KVKK / GDPR
+* Regülasyon
+* Uyum / Compliance
+* Etik
+* İç Politika Yönetimi
+* Lisanslama ve İzinler
+* Resmî Kurum İlişkileri
+* Kurumsal Sekreterya
+* Dava ve Uyuşmazlık Yönetimi
+
+16. Kurumsal İletişim
+
+* Halkla İlişkiler
+* Basın İlişkileri
+* Kurumsal İletişim
+* İç İletişim
+* Kriz İletişimi
+* İtibar Yönetimi
+* Yönetici İletişimi
+* Sosyal Etki İletişimi
+* Kamu İlişkileri
+* Hükûmet İlişkileri
+* Paydaş Yönetimi
+
+17. Topluluk, Ekosistem ve Geliştirici İlişkileri
+
+* Topluluk Yönetimi
+* Developer Relations
+* Partner Ekosistemi
+* Startup Ekosistemi
+* Elçi / Ambassador Programları
+* Etkinlik Yönetimi
+* Hackathon ve Yarışmalar
+* Eğitim İçerikleri
+* Dokümantasyon
+* API Topluluğu
+* Kullanıcı Grupları
+
+18. Uluslararası Büyüme
+
+* Globalleşme Stratejisi
+* Yeni Pazar Açılımı
+* Yerelleştirme
+* Çeviri
+* Bölgesel Operasyonlar
+* Ülke Yönetimi
+* İhracat
+* Uluslararası Satış
+* Uluslararası Pazarlama
+* Kültürel Uyum
+* Global Hukuk ve Regülasyon
+
+19. Sürdürülebilirlik ve Sosyal Etki
+
+* Sürdürülebilirlik
+* ESG
+* Sosyal Etki
+* Çevre Yönetimi
+* Karbon Yönetimi
+* Erişilebilirlik
+* Etik Teknoloji
+* Sosyal Sorumluluk
+* Etki Ölçümü
+* Kapsayıcı Tasarım
+* İnsan Hakları ve Tedarikçi Etiği
+
+20. Fiziksel Ürün Üreten Startup’larda
+
+* Endüstriyel Tasarım
+* Donanım Mühendisliği
+* Elektronik
+* Mekanik
+* Gömülü Sistemler
+* Robotik
+* Prototipleme
+* Üretim Mühendisliği
+* Malzeme Araştırması
+* Kalıp ve Üretim
+* Ürün Sertifikasyonu
+* Tedarikçi Kalitesi
+* Bakım ve Teknik Servis
+
+İyi bir startup’ın çekirdek yapısı
+
+Başlangıç aşamasında yüz ayrı departman kurmak yerine şu 10 ana birim yeterince kapsayıcı olur:
+
+1. Yönetim ve Strateji
+2. Ürün ve Planlama
+3. Teknoloji ve Yazılım
+4. Yapay Zekâ, Veri ve Analitik
+5. Ar-Ge ve İnovasyon
+6. Tasarım ve Kreatif
+7. Pazarlama, Satış ve Büyüme
+8. Müşteri Deneyimi ve Topluluk
+9. Operasyon, Finans ve İnsan
+10. Hukuk, Güvenlik ve Uyum
+
+Mesela senin düşündüğün AI tabanlı bir yapı için çekirdek kadro şöyle adlandırılabilir:
+
+* Executive: Yönetici ve karar verici
+* Planner: Hedefleri planlara ve görevlere dönüştürür
+* Product: Ne yapılacağını ve kullanıcı değerini belirler
+* Researcher: Araştırma, kaynak ve alternatif çözüm üretir
+* Analyst: Veriyi, riskleri ve sonuçları analiz eder
+* Architect: Sistem yapısını tasarlar
+* Coder: Yazılımı geliştirir
+
+
+1. Yönetim ve Strateji
+
+* Kurucu ekip / CEO Ofisi
+* Genel Yönetim
+* Strateji ve İş Planlama
+* Operasyon Yönetimi
+* Program / Portföy Yönetimi
+* Proje Yönetimi
+* İş Geliştirme
+* Kurumsal Gelişim
+* Ortaklıklar ve Stratejik İş Birlikleri
+* Yönetim Kurulu İlişkileri
+* Yatırımcı İlişkileri
+* OKR / Performans Yönetimi
+
+2. Ürün
+
+* Ürün Yönetimi
+* Ürün Stratejisi
+* Ürün Operasyonları
+* Ürün Analitiği
+* Ürün Araştırması
+* Kullanıcı Araştırması
+* Ürün Tasarımı
+* UX Tasarımı
+* UI Tasarımı
+* UX Writing / İçerik Tasarımı
+* Prototipleme
+* Ürün Büyümesi / Product Growth
+* Ürün Pazarlaması
+* Monetizasyon ve Fiyatlandırma
+
+Roller: Product Manager, Product Owner, Product Analyst, UX Researcher, Product Designer.
+
+3. Yazılım ve Teknoloji
+
+* Yazılım Geliştirme
+* Frontend
+* Backend
+* Mobil Uygulama
+* Full-stack
+* Masaüstü Uygulama
+* API ve Entegrasyon
+* Sistem Mimarisi
+* Platform Engineering
+* DevOps
+* Cloud / Bulut Sistemleri
+* Site Reliability Engineering
+* Veritabanı Yönetimi
+* Altyapı ve Ağ Sistemleri
+* İç Araçlar / Developer Tools
+* Teknik Dokümantasyon
+* Açık Kaynak Yönetimi
+* Teknik Destek
+
+Roller: Coder, Software Engineer, Architect, DevOps Engineer, Technical Lead, CTO.
+
+4. Yapay Zekâ, Veri ve Analitik
+
+* Veri Analitiği
+* İş Zekâsı
+* Veri Bilimi
+* Veri Mühendisliği
+* Makine Öğrenmesi
+* Yapay Zekâ Mühendisliği
+* Generative AI / LLM
+* Model Eğitimi
+* Model Değerlendirme
+* Prompt Engineering
+* MLOps
+* Veri Etiketleme
+* Veri Kalitesi
+* Karar Bilimi
+* Tahminleme ve Optimizasyon
+* Deney / A-B Testleri
+* Raporlama ve Dashboard
+
+Roller: Data Analyst, Business Analyst, Data Scientist, ML Engineer, AI Researcher.
+
+5. Ar-Ge ve İnovasyon
+
+* Araştırma ve Geliştirme
+* Temel Araştırma
+* Uygulamalı Araştırma
+* İnovasyon Yönetimi
+* Teknoloji Araştırması
+* Prototip Laboratuvarı
+* Yeni Ürün Geliştirme
+* Patent ve Fikri Mülkiyet
+* Akademik İş Birlikleri
+* Hibe ve Teşvik Projeleri
+* Gelecek Araştırmaları / Foresight
+* Deneysel Projeler
+
+6. Tasarım ve Kreatif
+
+* Marka Tasarımı
+* Grafik Tasarım
+* Görsel İletişim
+* Motion Design
+* 3D Tasarım
+* Video Prodüksiyon
+* Kurgu ve Post-prodüksiyon
+* Fotoğraf
+* Ses Tasarımı
+* Müzik Prodüksiyonu
+* Kreatif Strateji
+* Sanat Yönetimi
+* Metin Yazarlığı
+* İçerik Tasarımı
+* Deneyim Tasarımı
+* Oyun Tasarımı
+
+7. Kalite ve Test
+
+* Kalite Güvence / QA
+* Manuel Test
+* Test Otomasyonu
+* Performans Testleri
+* Güvenlik Testleri
+* Kullanılabilirlik Testleri
+* Cihaz / Tarayıcı Uyumluluğu
+* Sürüm Yönetimi
+* Hata Yönetimi
+* Kalite Standartları
+* Süreç Kalitesi
+
+8. Siber Güvenlik ve Güven
+
+* Bilgi Güvenliği
+* Uygulama Güvenliği
+* Altyapı Güvenliği
+* Güvenlik Operasyonları
+* Kimlik ve Erişim Yönetimi
+* Dolandırıcılık Önleme
+* Risk Yönetimi
+* Gizlilik
+* Veri Koruma
+* Güven ve Emniyet / Trust & Safety
+* İçerik Moderasyonu
+* Güvenlik Denetimleri
+* İş Sürekliliği
+* Felaket Kurtarma
+
+9. Pazarlama
+
+* Marka Yönetimi
+* Pazarlama Stratejisi
+* Dijital Pazarlama
+* Performans Pazarlaması
+* Growth Marketing
+* Sosyal Medya
+* İçerik Pazarlaması
+* SEO
+* ASO
+* E-posta Pazarlaması
+* Influencer Pazarlaması
+* Topluluk Pazarlaması
+* Etkinlik ve Sponsorluk
+* Medya Planlama
+* Reklam ve Kreatif
+* Kampanya Yönetimi
+* Pazarlama Analitiği
+* Müşteri İçgörüleri
+* Ürün Pazarlaması
+* İletişim ve PR
+
+10. Satış
+
+* Satış Stratejisi
+* B2B Satış
+* B2C Satış
+* Kurumsal Satış
+* Saha Satışı
+* İç Satış
+* Kanal Satışları
+* Bayi ve Distribütör Yönetimi
+* Satış Operasyonları
+* Satış Geliştirme / SDR
+* Teklif ve İhale Yönetimi
+* Çözüm Satışları
+* Presales
+* Satış Mühendisliği
+* Gelir Operasyonları / RevOps
+* CRM Yönetimi
+* Satış Analitiği
+
+11. Müşteri Departmanları
+
+* Müşteri Deneyimi
+* Müşteri Başarısı
+* Müşteri Destek
+* Teknik Destek
+* Çağrı Merkezi
+* Onboarding
+* Eğitim ve Akademi
+* Hesap Yönetimi
+* Key Account Management
+* Müşteri Operasyonları
+* Şikâyet Yönetimi
+* Sadakat ve Tutundurma
+* Churn Önleme
+* Müşteri Topluluğu
+* Voice of Customer
+
+12. Operasyon
+
+* İş Operasyonları
+* Ürün Operasyonları
+* Saha Operasyonları
+* Hizmet Operasyonları
+* Süreç Yönetimi
+* Süreç İyileştirme
+* Otomasyon
+* Kapasite Planlama
+* Talep Planlama
+* Tedarik Zinciri
+* Satın Alma
+* Lojistik
+* Depo Yönetimi
+* Envanter Yönetimi
+* Üretim Operasyonları
+* Kurulum ve Bakım
+* Tesis Yönetimi
+* İş Sürekliliği
+
+13. Finans
+
+* Finansal Planlama ve Analiz
+* Muhasebe
+* Bütçe ve Raporlama
+* Nakit Akışı Yönetimi
+* Hazine
+* Vergi
+* Maliyet Muhasebesi
+* Gelir Muhasebesi
+* Faturalama ve Tahsilat
+* Ödeme Operasyonları
+* Finansal Kontrol
+* İç Denetim
+* Yatırım Analizi
+* Fonlama ve Sermaye Yönetimi
+* Birleşme ve Satın Alma
+* Finansal Risk Yönetimi
+
+14. İnsan ve Kültür
+
+* İnsan Kaynakları
+* İşe Alım / Talent Acquisition
+* Çalışan Deneyimi
+* Organizasyonel Gelişim
+* Öğrenme ve Gelişim
+* Performans Yönetimi
+* Ücret ve Yan Haklar
+* Kariyer ve Yetenek Yönetimi
+* Kültür ve İç İletişim
+* İK Operasyonları
+* Bordro ve Özlük
+* İşveren Markası
+* Çeşitlilik ve Kapsayıcılık
+* Çalışan İlişkileri
+* İş Sağlığı ve Güvenliği
+
+15. Hukuk ve Uyum
+
+* Hukuk
+* Sözleşme Yönetimi
+* Ticaret Hukuku
+* İş Hukuku
+* Fikri Mülkiyet
+* KVKK / GDPR
+* Regülasyon
+* Uyum / Compliance
+* Etik
+* İç Politika Yönetimi
+* Lisanslama ve İzinler
+* Resmî Kurum İlişkileri
+* Kurumsal Sekreterya
+* Dava ve Uyuşmazlık Yönetimi
+
+16. Kurumsal İletişim
+
+* Halkla İlişkiler
+* Basın İlişkileri
+* Kurumsal İletişim
+* İç İletişim
+* Kriz İletişimi
+* İtibar Yönetimi
+* Yönetici İletişimi
+* Sosyal Etki İletişimi
+* Kamu İlişkileri
+* Hükûmet İlişkileri
+* Paydaş Yönetimi
+
+17. Topluluk, Ekosistem ve Geliştirici İlişkileri
+
+* Topluluk Yönetimi
+* Developer Relations
+* Partner Ekosistemi
+* Startup Ekosistemi
+* Elçi / Ambassador Programları
+* Etkinlik Yönetimi
+* Hackathon ve Yarışmalar
+* Eğitim İçerikleri
+* Dokümantasyon
+* API Topluluğu
+* Kullanıcı Grupları
+
+18. Uluslararası Büyüme
+
+* Globalleşme Stratejisi
+* Yeni Pazar Açılımı
+* Yerelleştirme
+* Çeviri
+* Bölgesel Operasyonlar
+* Ülke Yönetimi
+* İhracat
+* Uluslararası Satış
+* Uluslararası Pazarlama
+* Kültürel Uyum
+* Global Hukuk ve Regülasyon
+
+19. Sürdürülebilirlik ve Sosyal Etki
+
+* Sürdürülebilirlik
+* ESG
+* Sosyal Etki
+* Çevre Yönetimi
+* Karbon Yönetimi
+* Erişilebilirlik
+* Etik Teknoloji
+* Sosyal Sorumluluk
+* Etki Ölçümü
+* Kapsayıcı Tasarım
+* İnsan Hakları ve Tedarikçi Etiği
+
+20. Fiziksel Ürün Üreten Startup’larda
+
+* Endüstriyel Tasarım
+* Donanım Mühendisliği
+* Elektronik
+* Mekanik
+* Gömülü Sistemler
+* Robotik
+* Prototipleme
+* Üretim Mühendisliği
+* Malzeme Araştırması
+* Kalıp ve Üretim
+* Ürün Sertifikasyonu
+* Tedarikçi Kalitesi
+* Bakım ve Teknik Servis
+
+İyi bir startup’ın çekirdek yapısı
+
+Başlangıç aşamasında yüz ayrı departman kurmak yerine şu 10 ana birim yeterince kapsayıcı olur:
+
+1. Yönetim ve Strateji
+2. Ürün ve Planlama
+3. Teknoloji ve Yazılım
+4. Yapay Zekâ, Veri ve Analitik
+5. Ar-Ge ve İnovasyon
+6. Tasarım ve Kreatif
+7. Pazarlama, Satış ve Büyüme
+8. Müşteri Deneyimi ve Topluluk
+9. Operasyon, Finans ve İnsan
+10. Hukuk, Güvenlik ve Uyum
+
+Mesela senin düşündüğün AI tabanlı bir yapı için çekirdek kadro şöyle adlandırılabilir:
+* Executive: Yönetici ve karar verici
+* Planner: Hedefleri planlara ve görevlere dönüştürür
+* Product: Ne yapılacağını ve kullanıcı değerini belirler
+* Researcher: Araştırma, kaynak ve alternatif çözüm üretir
+* Analyst: Veriyi, riskleri ve sonuçları analiz eder
+* Architect: Sistem yapısını tasarlar
+* Coder: Yazılımı geliştirir
+* Designer: Arayüzü ve deneyimi tasarlar
+* Tester / Reviewer: Hataları, kaliteyi ve tutarlılığı kontrol eder
+* Operator: Sistemi çalıştırır, süreçleri takip eder
+* Growth: Kullanıcı ve gelir büyümesini yönetir
+* Security & Ethics: Güvenlik, mahremiyet ve etik sınırları korur
+
+
+
+bunu saglarsak hayatımdaki onemli bi km taşını tamamlamıs olacagım...
+Thinking durduruldu
+şimdi hersey uzel gorunuyor ama bi sıkıntı var ben bunu kredili bi sistemde odeme yaptıgm kullanım basına copilot sistemi gibi degil kendi AI code'ım github repomda calissin... dısarıya odeme yapmayalım... insource olsun...
+1m 41s düşündü
+istersen githubtan dısardan bazı kodlar indirebiliriz bu AI altyapıyı olusturacak... engine mi oluyor bu?
+1m 17s düşündü
+
+Evet, “engine” tam doğru kelime. Ama tek parça değil; kendi bünyemizde çalışan AI şirketi için dört katman kuracağız:
+
+Model — beyin: Kod anlayan açık ağırlıklı model.
+Inference engine — motor: Modeli bilgisayarda çalıştıran Ollama veya llama.cpp.
+Agent runtime — çalışan: Dosya okuyan, terminal kullanan, kod değiştiren ve test yapan OpenHands tabanlı sistem.
+Company orchestrator — yönetim: Bizim hazırladığımız departmanlar, görev dağılımı, onay kapıları ve günlük otomasyon.
+Kuracağımız gerçek sistem
+Telefondan görev/proje yükleme
+            ↓
+GitHub tasks/projects veya tasks/inbox
+            ↓
+Daily Company Orchestrator
+            ↓
+Kendi self-hosted runner cihazımız
+            ↓
+Kreative Core AI Engine
+            ↓
+Yerel model + departman ajanı
+            ↓
+Ayrı çalışma alanı / branch
+            ↓
+Kodlama + test + güvenlik kontrolü
+            ↓
+Pull request
+            ↓
+Telefondan senin onayın
+
+Böylece:
+
+Copilot kullanım kredisi yok.
+OpenAI, Anthropic veya başka bir modele istek başına ödeme yok.
+Kod ve proje bilgileri kendi cihazımızdan çıkmıyor.
+Telefon yalnızca şirketin kontrol paneli oluyor.
+İşlem gücünü sürekli açık duran kendi bilgisayarımız sağlıyor.
+
+GitHub self-hosted runner kullanımı için ayrıca Actions işlem ücreti alınmıyor; fakat cihaz, elektrik ve bakım bize ait oluyor. GitHub ayrıca self-hosted runner’ların yalnızca özel repolarda kullanılmasını özellikle öneriyor, çünkü public repodaki zararlı bir pull request yerel makinede kod çalıştırabilir.
+
+Neden modeli doğrudan GitHub Actions içinde çalıştırmıyoruz?
+
+GitHub’ın standart runner’ı her işte yeni bir sanal makine açıyor ve görev bitince makineyi siliyor. Dolayısıyla modelin her çalışmada tekrar indirilmesi, belleğe yüklenmesi ve CPU üzerinde çalışması gerekir; ciddi coding agent işleri için verimsiz olur.
+
+Kendi runner cihazımızdaysa:
+
+model diskte kalır,
+model bellekte sıcak tutulabilir,
+GPU sürekli kullanılabilir,
+görev geldiğinde birkaç saniye içinde iş başlayabilir.
+
+Cihaz kapalıysa GitHub işi kuyrukta bekletir; uygun runner bulunamazsa iş en fazla 24 saat sonra zaman aşımına uğrar.
+
+Kullanacağımız açık kaynak parçalar
+1. Model motoru: Ollama
+
+İlk sürüm için en rahat seçenek Ollama. Windows, macOS ve Linux üzerinde yerel modelleri indirip API olarak sunabiliyor. Linux’ta servis olarak sürekli açık çalıştırılabiliyor.
+
+Alternatif olarak daha hafif ve kontrol edilebilir llama.cpp kullanabiliriz. llama-server, CPU/GPU üzerinde quantized modeller çalıştırıyor; OpenAI uyumlu chat, embeddings ve tool-calling uçları sağlıyor.
+
+Benim başlangıç tercihim:
+
+Ollama
+
+Daha sonra performans ve bellek optimizasyonu gerekirse:
+
+llama.cpp
+
+altyapısına ineriz.
+
+2. Coding modeli
+
+Güçlü cihaz varsa iki ciddi aday var:
+
+Qwen3-Coder-30B-A3B-Instruct: Repo ölçeğinde kod anlayışı ve agentic coding için geliştirilmiş; toplam 30,5 milyar parametreli fakat her adımda yaklaşık 3,3 milyar parametreyi etkinleştiren MoE yapıda.
+Devstral Small 2 24B: Yazılım mühendisliği ajanları için geliştirilmiş, yerelde çalıştırılabilen açık model.
+
+OpenHands’in yerel model rehberi de özellikle Qwen3-Coder-30B ve Devstral Small 2’yi öneriyor. Qwen3-Coder için örnek minimum olarak 12 GB VRAM + 64 GB sistem belleği veya en az 32 GB birleşik belleğe sahip Apple Silicon belirtiliyor.
+
+Donanım daha zayıfsa ilk aşamada daha küçük bir coder model çalıştırırız; ancak küçük modellerde terminal kullanımı, JSON üretimi ve uzun görevlerde tutarlılık belirgin biçimde düşebilir. OpenHands de yerel modellerin güçlü GPU istediğini ve daha küçük modellerde hatalı tool call görülebileceğini açıkça belirtiyor.
+
+3. Agent runtime: OpenHands çekirdeği
+
+OpenHands’in açık kaynak çekirdeğini kullanabiliriz. Kod tabanının ana bölümü ve agent-server Docker görüntüleri MIT lisanslı; yerel model, terminal, dosya düzenleme ve sandbox çalışma akışını destekliyor.
+
+Ama OpenHands’i olduğu gibi “şirket” yapmayacağız. Üzerine kendi katmanımızı yazacağız:
+
+Kreative Core Company Agent Runtime
+├── Analyst
+├── Planner
+├── Architect
+├── Coder
+├── Designer
+├── Reviewer
+├── 20 departman ajanı
+├── şirket politikaları
+└── kurucu onay kapıları
+
+OpenHands yalnızca ajanların elleri ve çalışma masası olacak. Beyin, görev sistemi, hafıza ve şirket yapısı Kreative Core’a ait olacak.
+
+Repo yapısı nasıl değişecek?
+Kreative-Core/
+├── engine/
+│   ├── orchestrator/
+│   ├── agent_runtime/
+│   ├── model_gateway/
+│   ├── memory/
+│   ├── tools/
+│   ├── sandbox/
+│   └── policies/
+│
+├── company/
+│   ├── departments/
+│   ├── agents/
+│   ├── approval_gates/
+│   └── model-routing.toml
+│
+├── infra/
+│   ├── docker-compose.yml
+│   ├── ollama/
+│   ├── openhands/
+│   └── github-runner/
+│
+├── tasks/
+│   ├── projects/
+│   ├── inbox/
+│   └── .company/
+│
+└── .github/workflows/
+    ├── daily-company-orchestrator.yml
+    ├── local-ai-dispatch.yml
+    ├── local-ai-review.yml
+    └── company-health.yml
+
+Model dosyalarını GitHub reposuna koymayacağız; çok büyükler. Kendi cihazımızda örneğin:
+
+D:\KreativeCore\models
+
+veya Linux’ta:
+
+/opt/kreative-core/models
+
+altında duracaklar.
+
+Repo yalnızca şunları saklayacak:
+
+model seçimi,
+ajan promptları,
+şirket hafızası,
+araç politikaları,
+workflow’lar,
+görev ve proje dosyaları,
+oluşan kod ve belgeler.
+Copilot sistemi neye dönüşecek?
+
+Mevcut:
+
+GitHub Issue → Copilot → Özel Agent → PR
+
+yerine:
+
+GitHub Issue → Self-hosted Runner
+             → Local AI Engine
+             → Kreative Core Agent
+             → Local Model
+             → PR
+
+Şunları kaldıracağız:
+
+COPILOT_AGENT_TOKEN
+copilot:auto
+company-copilot-dispatch.yml
+
+Şunları ekleyeceğiz:
+
+local-ai:auto
+local-ai:queued
+local-ai:working
+local-ai:review
+local-ai:failed
+local-ai:owner-approval
+Güvenli çalışma şekli
+
+AI doğrudan ana dala yazmayacak.
+
+Her görevde:
+
+Temiz bir Git worktree veya Docker sandbox oluşturacak.
+Yalnızca görevle ilgili dosyalara erişecek.
+İzin verilen terminal komutlarını kullanacak.
+Testleri çalıştıracak.
+Güvenlik taramasından geçecek.
+Yeni branch açacak.
+Pull request oluşturacak.
+Sen telefondan kontrol edip merge edeceksin.
+
+Finans, hukuk, güvenlik, ödeme, yayın ve veri silme gibi işler otomatik uygulanmayacak; yalnızca öneri ve plan üretip senin onayını bekleyecek.
+
+En doğru tercih
+
+İlk çalışan sürüm için önerim:
+
+GitHub Private Repo
++ GitHub Self-hosted Runner
++ Docker
++ Ollama
++ Qwen3-Coder veya Devstral
++ OpenHands Agent SDK
++ Kreative Core Company Orchestrator
+
+Bu, dışarıya kullanım başına ödeme yapmayan gerçek in-house AI yazılım şirketi olur.
+
+Tek zorunlu eksik bilgi, motoru çalıştıracak cihazın gücü: Windows/Linux/Mac, işlemci, RAM, ekran kartı modeli ve ekran kartı belleği kaç GB? Buna göre model ve engine sürümünü net seçelim.
+
+şimdi yeni bi planlama yapmadan once bi netleselm bosuna yorulma sen de....
+
+istedigim sey herhangi bi cihaz olmasa da github uzerinde calissın.... bi repo içerisinde toplayalım....
+ben sadece mobliden durumu kontrol edeyim... 
+
+hersey giithub uzerinde host olsun... mobilden aksiyon baslataym workflow kontrol edyim yeni proje yukleym vs...
+
+
+bunu sıfırdan bi repo olarak dusunelim bence.. yeni bi repo acıp bu yeni yapıyı yukleyelim.. ama hazırlamadan once bi anlat istersen antant kalalım
+bos mu seciiim
+ilk çalıştrma asamasındaym
+
+Haklısın, önceki yorumum aceleciydi. Repo yapısının yanlış olduğunu doğrulamadan söyledim.
+
+GitHub bağlantısıyla kontrol etmeyi denedim ama korrayt/kreativecore-ai-company private reposuna erişemiyorum. Bağlı GitHub App şu anda yalnızca Its-Us-Core organizasyonuna kurulmuş görünüyor; kişisel korrayt hesabına kurulu değil. Bu yüzden repo gerçekten mevcut olsa bile bağlantı bana 404 Not Found döndürüyor.
+
+Bunu düzeltmek için:
+
+GitHub’da profil fotoğrafın → Settings
+Applications
+Installed GitHub Apps
+ChatGPT Codex Connector → Configure
+Kurulum hesabı olarak korrayt kişisel hesabını seç
+Repository access bölümünde:
+Only select repositories
+kreativecore-ai-company reposunu ekle
+Save
+
+Alternatif olarak repoyu Its-Us-Core organizasyonuna taşırsan mevcut bağlantı üzerinden görebilirim; ama kişisel hesapta kalması daha sade.
+
+Bağlantıyı ekledikten sonra repo kökünü, workflow dosyalarını ve ilk çalıştırma durumunu doğrudan kontrol ederim.
+
+private olmasa public yapsam kolaylasır mı iş?
+28s düşündü
+
+Public yapmak şu aşamada işi kolaylaştırır. Repoyu doğrudan inceleyebilir, workflow dosyalarının görünürlüğünü ve hataları kontrol edebilirim. Ayrıca public repolarda standart GitHub-hosted Actions kullanımı ücretsizdir; private repolarda ise hesabının aylık Actions kotasından düşer.
+
+Ama public olduğunda:
+
+Kodların, şirket ajanların ve proje klasörlerin herkesçe görülebilir.
+Workflow geçmişi ve logları da herkese açık olur.
+Herkes repoyu fork edebilir.
+Daha sonra private yapsan bile önceden alınmış kopyaları geri çekemezsin.
+Burada en mantıklı çözüm
+
+Repo şu an yalnızca altyapı ve boş şablonlardan oluşuyorsa geçici olarak public yapabiliriz:
+
+Public yap.
+Ben repo yapısını ve workflow’ları kontrol edeyim.
+AI motorunu kurup test edelim.
+Her şey çalıştıktan sonra ilk gerçek proje veya özel fikir yüklenmeden önce private yapalım.
+
+Public yapmak bana yalnızca okuma ve kontrol kolaylığı sağlar; doğrudan dosya yazma yetkisi vermez. Kalıcı çözüm, ChatGPT GitHub App’i kişisel korrayt hesabına kurup bu repoyu seçmektir. GitHub Apps, kişisel hesaplara ayrıca kurulabilir ve seçili private repolara erişim verilebilir.
+
+Şu an repo boş şirket altyapısından ibaretse geçici public yapmak makul; gerçek projeler başlamadan private’a döndürürüz.
+
+şimdi bi kontrol eder misn
+1m 53s düşündü
+
+Şimdi görebiliyorum. Repo public olmuş ve erişim açılmış. Son kurulum commit’i de mevcut: chore: install Kreative Core GitHub AI Company.
+
+Ama net bir eksik var:
+
+README.md yüklenmiş.
+QUICKSTART.md yüklenmiş ve Bootstrap adımlarını tarif ediyor.
+Fakat .github/workflows/bootstrap-engine.yml bulunmuyor.
+.github/ISSUE_TEMPLATE/new-project.yml bulunmuyor.
+engine/intake.py bulunmuyor.
+company/settings.toml bulunmuyor.
+
+Bu yüzden Actions ekranında yalnızca Dependency Graph görüyorsun. Bootstrap AI Engine görünmüyor çünkü çalıştırılacak workflow dosyaları repoya ulaşmamış.
+
+Yani üst klasör hatası değil; yükleme eksik kalmış. Büyük ihtimalle tarayıcıdaki dosya sınırı veya klasör seçimi sırasında bazı klasörler atlandı.
+
+Şu an New workflow’a basıp elle workflow oluşturma. En temiz yol, yalnızca eksik çalışma katmanını içeren küçük bir repair ZIP hazırlayıp ikinci yükleme olarak eklemek:
+
+.github/
+company/
+engine/
+models/
+scripts/
+tests/
+tasks/
+pyproject.toml
+
+Bunu yükledikten sonra Actions sol menüsünde şunların görünmesi gerekir:
+
+Bootstrap AI Engine
+Engine Health Check
+Daily Intake and Routing
+Mobile Company Control
+AI Analyze Project
+AI Execute Task
+AI Review Pull Request
+Company Engine CI
+
+Repo şimdilik public kalabilir; sistem düzeldikten ve motor testi geçtikten sonra gerçek proje yüklemeden önce tekrar private yaparız.
+
+tmm hazırlarsan yukleym ek
+1m 6s düşündü
+
+Hazır. Bu paket yalnızca eksik kalan çalışma katmanını içeriyor:
+
+Kreative Core AI Company Repair ZIP’i indir
+
+İçinde 81 dosya ve 8 workflow var; GitHub’ın web yükleme sınırının altında. Shell ve paket testleri geçti.
+
+Şimdi:
+
+ZIP’i çıkart.
+UPLOAD_REPAIR_TO_REPO klasörünü aç.
+İçindeki her şeyi mevcut kreativecore-ai-company reposunun köküne yükle.
+Klasörün kendisini yükleme.
+Commit mesajı:
+fix: restore AI engine and GitHub workflows
+
+Yükleme sonrası Actions ekranını yenile. Şunlar görünmeli:
+
+Bootstrap AI Engine
+Engine Health Check
+Daily Intake and Routing
+Mobile Company Control
+AI Analyze Project
+AI Execute Task
+AI Review Pull Request
+Company Engine CI
+
+İlk olarak Bootstrap AI Engine çalıştıracağız. 
+
+yine aynı gorunuyor sanki kontrol eder miisn?
+4m 36s düşündü
+
+Evet, gerçekten aynı kalmış. Son “Add files via upload” commit’i gelmiş ama .github/workflows/bootstrap-engine.yml hâlâ repoda yok.
+
+Yani sorun şu: .github klasörü iki yüklemede de tarayıcı tarafından atlanmış. Diğer dosyalar zaten mevcut olduğu için son yükleme yeni bir değişiklik oluşturmamış. Bağlantı üzerinden doğrudan eklemeyi de denedim; GitHub yine 403 Resource not accessible by integration verdi.
+
+Sekiz ayrı workflow’la uğraşmayalım. Hepsini tek bir birleşik kontrol workflow’unda topladım:
+
+KREATIVE_CORE_COMPANY_CONTROL.yml
+
+Şimdi bunu elle oluşturacağız
+
+GitHub’da repo ana sayfasında:
+
+Code → Add file → Create new file
+Üstteki dosya adı alanına tam olarak şunu yaz:
+.github/workflows/company-control.yml
+
+GitHub, dosya adında / kullanıldığında gerekli alt klasörleri kendisi oluşturuyor.
+
+İndirdiğin KREATIVE_CORE_COMPANY_CONTROL.yml dosyasını Not Defteri ile aç.
+İçindeki her şeyi kopyalayıp GitHub’daki büyük metin alanına yapıştır.
+Commit mesajı:
+fix: add unified Kreative Core company workflow
+Doğrudan Soner-Koray-Taşan dalına commit et.
+
+Bu önemli; GitHub workflow’ları repo kökündeki .github/workflows klasöründen algılıyor ve manuel çalıştırılacak workflow_dispatch dosyasının varsayılan dalda bulunması gerekiyor.
+
+Commit sonrasında
+
+Actions ekranını yenileyince solda şunu görmelisin:
+
+Kreative Core Company Control
+
+İlk çalıştırma ayarları:
+
+Operation: bootstrap-engine
+Target: boş
+Agent: coder
+Confirm: RUN
+
+Bu tek workflow daha sonra şunların hepsini yönetecek:
+
+bootstrap-engine
+engine-health
+scan-intake
+analyze-project
+execute-task
+review-pr
+
+Önceki repair ZIP’ini tekrar yükleme. Commit sonrası Actions ekranının görüntüsünü gönder; bootstrap’ı birlikte başlatalım. 
+
+Kitaplık
+/
+KREATIVE_CORE_COMPANY_CONTROL.yml
+name: Kreative Core Company Control
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: İşlem
+        required: true
+        type: choice
+        default: bootstrap-engine
+        options:
+          - bootstrap-engine
+          - engine-health
+          - scan-intake
+          - analyze-project
+          - execute-task
+          - review-pr
+      target:
+        description: Proje slug, görev slug/issue numarası veya PR numarası
+        required: false
+        type: string
+        default: ""
+      agent:
+        description: Görevi çalıştıracak ajan
+        required: true
+        type: choice
+        default: coder
+        options:
+          - analyst
+          - planner
+          - researcher
+          - product
+          - architect
+          - coder
+          - designer
+          - reviewer
+          - growth
+      confirm:
+        description: RUN yaz
+        required: true
+        type: string
+        default: "NO"
+
+  schedule:
+    - cron: "0 5 * * *"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: kreative-core-company-control
+  cancel-in-progress: false
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ENGINE_TAG: ai-engine-v1
+      MODEL_REPO: Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF
+      MODEL_FILE: qwen2.5-coder-1.5b-instruct-q4_k_m.gguf
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Resolve request
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            operation="scan-intake"
+            target=""
+            agent="operator"
+          else
+            operation="${{ inputs.operation }}"
+            target="${{ inputs.target }}"
+            agent="${{ inputs.agent }}"
+
+            if [[ "${{ inputs.confirm }}" != "RUN" ]]; then
+              echo "::error::Confirm alanına RUN yazılmalı."
+              exit 64
+            fi
+          fi
+
+          case "$operation" in
+            analyze-project|execute-task|review-pr)
+              if [[ -z "$target" ]]; then
+                echo "::error::Bu işlem için Target zorunlu."
+                exit 64
+              fi
+              ;;
+          esac
+
+          printf 'OPERATION=%s\n' "$operation" >> "$GITHUB_ENV"
+          printf 'TARGET=%s\n' "$target" >> "$GITHUB_ENV"
+          printf 'AGENT=%s\n' "$agent" >> "$GITHUB_ENV"
+
+      - name: Install model downloader
+        if: env.OPERATION == 'bootstrap-engine'
+        run: |
+          python -m pip install --disable-pip-version-check \
+            "huggingface_hub>=0.30,<2"
+
+      - name: Download official Qwen model
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p engine-assets
+          hf download "$MODEL_REPO" "$MODEL_FILE" \
+            --local-dir engine-assets
+
+      - name: Download official llama.cpp CPU engine
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          gh api repos/ggml-org/llama.cpp/releases/latest \
+            > engine-assets/llama-release.json
+
+          asset_url="$(
+            jq -r '
+              .assets[]
+              | select(
+                  .name
+                  | test("llama-.*-bin-ubuntu-x64\\.tar\\.gz$")
+                )
+              | .browser_download_url
+            ' engine-assets/llama-release.json \
+            | head -n 1
+          )"
+
+          if [[ -z "$asset_url" || "$asset_url" == "null" ]]; then
+            echo "::error::Uyumlu llama.cpp Ubuntu x64 paketi bulunamadı."
+            exit 1
+          fi
+
+          curl --fail --location --retry 3 \
+            "$asset_url" \
+            --output engine-assets/llama-cpp-ubuntu-x64.tar.gz
+
+      - name: Create engine manifest
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("engine-assets")
+          release = json.loads(
+              (root / "llama-release.json").read_text(encoding="utf-8")
+          )
+
+          names = [
+              "qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+              "llama-cpp-ubuntu-x64.tar.gz",
+          ]
+
+          manifest = {
+              "version": 1,
+              "model_source": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+              "model_license": "Apache-2.0",
+              "llama_cpp_source": "ggml-org/llama.cpp",
+              "llama_cpp_release": release["tag_name"],
+              "assets": [],
+          }
+
+          for name in names:
+              path = root / name
+              manifest["assets"].append(
+                  {
+                      "name": name,
+                      "size": path.stat().st_size,
+                      "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                  }
+              )
+
+          (root / "engine-manifest.json").write_text(
+              json.dumps(manifest, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Create or update engine release
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if ! gh release view "$ENGINE_TAG" >/dev/null 2>&1; then
+            gh release create "$ENGINE_TAG" \
+              --title "Kreative Core AI Engine v1" \
+              --notes "Open model and llama.cpp CPU runtime assets."
+          fi
+
+          gh release upload "$ENGINE_TAG" \
+            engine-assets/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf \
+            engine-assets/llama-cpp-ubuntu-x64.tar.gz \
+            engine-assets/engine-manifest.json \
+            --clobber
+
+      - name: Restore engine cache
+        if: >-
+          env.OPERATION == 'engine-health' ||
+          env.OPERATION == 'analyze-project' ||
+          env.OPERATION == 'execute-task' ||
+          env.OPERATION == 'review-pr'
+        uses: actions/cache@v5
+        with:
+          path: .engine-cache
+          key: kreativecore-ai-engine-v1
+
+      - name: Fetch and verify engine
+        if: >-
+          env.OPERATION == 'engine-health' ||
+          env.OPERATION == 'analyze-project' ||
+          env.OPERATION == 'execute-task' ||
+          env.OPERATION == 'review-pr'
+        shell: bash
+        run: bash scripts/fetch_engine.sh .
+
+      - name: Start local model
+        if: >-
+          env.OPERATION == 'engine-health' ||
+          env.OPERATION == 'analyze-project' ||
+          env.OPERATION == 'execute-task' ||
+          env.OPERATION == 'review-pr'
+        shell: bash
+        run: bash scripts/start_engine.sh .
+
+      - name: Test AI engine
+        if: env.OPERATION == 'engine-health'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from engine.json_protocol import extract_json
+          from engine.runtime import client
+
+          response = client(Path(".").resolve()).chat(
+              system="Return only valid JSON.",
+              user='Return exactly {"status":"ok","engine":"local"}.',
+              max_tokens=48,
+              temperature=0,
+          )
+
+          result = extract_json(response)
+          assert result.get("status") == "ok", result
+          print(result)
+          PY
+
+      - name: Scan projects and tasks
+        if: env.OPERATION == 'scan-intake'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m engine.intake . --sync-issues
+
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add tasks/.company tasks/projects tasks/inbox
+
+          if git diff --cached --quiet; then
+            echo "Şirket hafızasında değişiklik yok."
+          else
+            git commit -m "chore(company): refresh intake and routing"
+            git push
+          fi
+
+      - name: Create AI analysis branch
+        if: env.OPERATION == 'analyze-project'
+        shell: bash
+        run: |
+          set -euo pipefail
+          safe_target="$(printf '%s' "$TARGET" | tr -c 'A-Za-z0-9._-' '-')"
+          branch="ai/analyze-${safe_target}-${GITHUB_RUN_NUMBER}"
+          git switch -c "$branch"
+          printf 'AI_BRANCH=%s\n' "$branch" >> "$GITHUB_ENV"
+
+      - name: Analyze project
+        if: env.OPERATION == 'analyze-project'
+        shell: bash
+        run: python -m engine.analyze_project "$TARGET"
+
+      - name: Publish analysis pull request
+        if: env.OPERATION == 'analyze-project'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "kreative-core-ai[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "tasks/projects/$TARGET/.company"
+          git commit -m "docs(ai): analyze $TARGET"
+          git push --set-upstream origin "$AI_BRANCH"
+
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$AI_BRANCH" \
+            --title "[AI Analysis] $TARGET" \
+            --body "Yerel GitHub-hosted açık model tarafından üretilen Analyst, Planner ve Architect raporu. Manuel inceleme gereklidir."
+
+      - name: Create AI task branch
+        if: env.OPERATION == 'execute-task'
+        shell: bash
+        run: |
+          set -euo pipefail
+          safe_target="$(printf '%s' "$TARGET" | tr -c 'A-Za-z0-9._-' '-')"
+          branch="ai/task-${safe_target}-${GITHUB_RUN_NUMBER}"
+          git switch -c "$branch"
+          printf 'AI_BRANCH=%s\n' "$branch" >> "$GITHUB_ENV"
+
+      - name: Execute task
+        if: env.OPERATION == 'execute-task'
+        shell: bash
+        run: |
+          python -m engine.execute_task \
+            "$TARGET" \
+            --agent "$AGENT"
+
+      - name: Publish task pull request
+        if: env.OPERATION == 'execute-task'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "kreative-core-ai[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add --all
+
+          if git diff --cached --quiet; then
+            echo "::error::AI herhangi bir dosya değişikliği üretmedi."
+            exit 1
+          fi
+
+          git commit -m "feat(ai): execute task $TARGET"
+          git push --set-upstream origin "$AI_BRANCH"
+
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$AI_BRANCH" \
+            --title "[AI Task] $TARGET" \
+            --body "Yerel GitHub-hosted açık model tarafından üretilen görev çıktısı. Test raporları reports/ klasöründedir. Manuel inceleme gereklidir."
+
+      - name: Review pull request
+        if: env.OPERATION == 'review-pr'
+        shell: bash
+        run: |
+          if [[ ! "$TARGET" =~ ^[0-9]+$ ]]; then
+            echo "::error::Review için Target alanı PR numarası olmalı."
+            exit 64
+          fi
+
+          python -m engine.review_pr "$TARGET"
+
+      - name: Stop local model
+        if: always()
+        shell: bash
+        run: bash scripts/stop_engine.sh . || true
+
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "### Kreative Core Company Control"
+            echo
+            echo "- Operation: \`$OPERATION\`"
+            echo "- Target: \`$TARGET\`"
+            echo "- Agent: \`$AGENT\`"
+            echo "- Model API cost: **none**"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+Kitaplık
+/
+KREATIVE_CORE_COMPANY_CONTROL.yml
+name: Kreative Core Company Control
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: İşlem
+        required: true
+        type: choice
+        default: bootstrap-engine
+        options:
+          - bootstrap-engine
+          - engine-health
+          - scan-intake
+          - analyze-project
+          - execute-task
+          - review-pr
+      target:
+        description: Proje slug, görev slug/issue numarası veya PR numarası
+        required: false
+        type: string
+        default: ""
+      agent:
+        description: Görevi çalıştıracak ajan
+        required: true
+        type: choice
+        default: coder
+        options:
+          - analyst
+          - planner
+          - researcher
+          - product
+          - architect
+          - coder
+          - designer
+          - reviewer
+          - growth
+      confirm:
+        description: RUN yaz
+        required: true
+        type: string
+        default: "NO"
+
+  schedule:
+    - cron: "0 5 * * *"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: kreative-core-company-control
+  cancel-in-progress: false
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ENGINE_TAG: ai-engine-v1
+      MODEL_REPO: Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF
+      MODEL_FILE: qwen2.5-coder-1.5b-instruct-q4_k_m.gguf
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Resolve request
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            operation="scan-intake"
+            target=""
+            agent="operator"
+          else
+            operation="${{ inputs.operation }}"
+            target="${{ inputs.target }}"
+            agent="${{ inputs.agent }}"
+
+            if [[ "${{ inputs.confirm }}" != "RUN" ]]; then
+              echo "::error::Confirm alanına RUN yazılmalı."
+              exit 64
+            fi
+          fi
+
+          case "$operation" in
+            analyze-project|execute-task|review-pr)
+              if [[ -z "$target" ]]; then
+                echo "::error::Bu işlem için Target zorunlu."
+                exit 64
+              fi
+              ;;
+          esac
+
+          printf 'OPERATION=%s\n' "$operation" >> "$GITHUB_ENV"
+          printf 'TARGET=%s\n' "$target" >> "$GITHUB_ENV"
+          printf 'AGENT=%s\n' "$agent" >> "$GITHUB_ENV"
+
+      - name: Install model downloader
+        if: env.OPERATION == 'bootstrap-engine'
+        run: |
+          python -m pip install --disable-pip-version-check \
+            "huggingface_hub>=0.30,<2"
+
+      - name: Download official Qwen model
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p engine-assets
+          hf download "$MODEL_REPO" "$MODEL_FILE" \
+            --local-dir engine-assets
+
+      - name: Download official llama.cpp CPU engine
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          gh api repos/ggml-org/llama.cpp/releases/latest \
+            > engine-assets/llama-release.json
+
+          asset_url="$(
+            jq -r '
+              .assets[]
+              | select(
+                  .name
+                  | test("llama-.*-bin-ubuntu-x64\\.tar\\.gz$")
+                )
+              | .browser_download_url
+            ' engine-assets/llama-release.json \
+            | head -n 1
+          )"
+
+          if [[ -z "$asset_url" || "$asset_url" == "null" ]]; then
+            echo "::error::Uyumlu llama.cpp Ubuntu x64 paketi bulunamadı."
+            exit 1
+          fi
+
+          curl --fail --location --retry 3 \
+            "$asset_url" \
+            --output engine-assets/llama-cpp-ubuntu-x64.tar.gz
+
+      - name: Create engine manifest
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("engine-assets")
+          release = json.loads(
+              (root / "llama-release.json").read_text(encoding="utf-8")
+          )
+
+          names = [
+              "qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+              "llama-cpp-ubuntu-x64.tar.gz",
+          ]
+
+          manifest = {
+              "version": 1,
+              "model_source": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+              "model_license": "Apache-2.0",
+              "llama_cpp_source": "ggml-org/llama.cpp",
+              "llama_cpp_release": release["tag_name"],
+              "assets": [],
+          }
+
+          for name in names:
+              path = root / name
+              manifest["assets"].append(
+                  {
+                      "name": name,
+                      "size": path.stat().st_size,
+                      "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                  }
+              )
+
+          (root / "engine-manifest.json").write_text(
+              json.dumps(manifest, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Create or update engine release
+        if: env.OPERATION == 'bootstrap-engine'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if ! gh release view "$ENGINE_TAG" >/dev/null 2>&1; then
+            gh release create "$ENGINE_TAG" \
+              --title "Kreative Core AI Engine v1" \
+              --notes "Open model and llama.cpp CPU runtime assets."
+          fi
+
+          gh release upload "$ENGINE_TAG" \
+            engine-assets/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf \
+            engine-assets/llama-cpp-ubuntu-x64.tar.gz \
+            engine-assets/engine-manifest.json \
+            --clobber
+
+      - name: Restore engine cache
+        if: >-
+          env.OPERATION == 'engine-health' ||
+          env.OPERATION == 'analyze-project' ||
+          env.OPERATION == 'execute-task' ||
+          env.OPERATION == 'review-pr'
+        uses: actions/cache@v5
+        with:
+          path: .engine-cache
+          key: kreativecore-ai-engine-v1
+
+      - name: Fetch and verify engine
+        if: >-
+          env.OPERATION == 'engine-health' ||
+          env.OPERATION == 'analyze-project' ||
+          env.OPERATION == 'execute-task' ||
+          env.OPERATION == 'review-pr'
+        shell: bash
+        run: bash scripts/fetch_engine.sh .
+
+      - name: Start local model
+        if: >-
+          env.OPERATION == 'engine-health' ||
+          env.OPERATION == 'analyze-project' ||
+          env.OPERATION == 'execute-task' ||
+          env.OPERATION == 'review-pr'
+        shell: bash
+        run: bash scripts/start_engine.sh .
+
+      - name: Test AI engine
+        if: env.OPERATION == 'engine-health'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from engine.json_protocol import extract_json
+          from engine.runtime import client
+
+          response = client(Path(".").resolve()).chat(
+              system="Return only valid JSON.",
+              user='Return exactly {"status":"ok","engine":"local"}.',
+              max_tokens=48,
+              temperature=0,
+          )
+
+          result = extract_json(response)
+          assert result.get("status") == "ok", result
+          print(result)
+          PY
+
+      - name: Scan projects and tasks
+        if: env.OPERATION == 'scan-intake'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m engine.intake . --sync-issues
+
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add tasks/.company tasks/projects tasks/inbox
+
+          if git diff --cached --quiet; then
+            echo "Şirket hafızasında değişiklik yok."
+          else
+            git commit -m "chore(company): refresh intake and routing"
+            git push
+          fi
+
+      - name: Create AI analysis branch
+        if: env.OPERATION == 'analyze-project'
+        shell: bash
+        run: |
+          set -euo pipefail
+          safe_target="$(printf '%s' "$TARGET" | tr -c 'A-Za-z0-9._-' '-')"
+          branch="ai/analyze-${safe_target}-${GITHUB_RUN_NUMBER}"
+          git switch -c "$branch"
+          printf 'AI_BRANCH=%s\n' "$branch" >> "$GITHUB_ENV"
+
+      - name: Analyze project
+        if: env.OPERATION == 'analyze-project'
+        shell: bash
+        run: python -m engine.analyze_project "$TARGET"
+
+      - name: Publish analysis pull request
+        if: env.OPERATION == 'analyze-project'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "kreative-core-ai[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "tasks/projects/$TARGET/.company"
+          git commit -m "docs(ai): analyze $TARGET"
+          git push --set-upstream origin "$AI_BRANCH"
+
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$AI_BRANCH" \
+            --title "[AI Analysis] $TARGET" \
+            --body "Yerel GitHub-hosted açık model tarafından üretilen Analyst, Planner ve Architect raporu. Manuel inceleme gereklidir."
+
+      - name: Create AI task branch
+        if: env.OPERATION == 'execute-task'
+        shell: bash
+        run: |
+          set -euo pipefail
+          safe_target="$(printf '%s' "$TARGET" | tr -c 'A-Za-z0-9._-' '-')"
+          branch="ai/task-${safe_target}-${GITHUB_RUN_NUMBER}"
+          git switch -c "$branch"
+          printf 'AI_BRANCH=%s\n' "$branch" >> "$GITHUB_ENV"
+
+      - name: Execute task
+        if: env.OPERATION == 'execute-task'
+        shell: bash
+        run: |
+          python -m engine.execute_task \
+            "$TARGET" \
+            --agent "$AGENT"
+
+      - name: Publish task pull request
+        if: env.OPERATION == 'execute-task'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "kreative-core-ai[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add --all
+
+          if git diff --cached --quiet; then
+            echo "::error::AI herhangi bir dosya değişikliği üretmedi."
+            exit 1
+          fi
+
+          git commit -m "feat(ai): execute task $TARGET"
+          git push --set-upstream origin "$AI_BRANCH"
+
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$AI_BRANCH" \
+            --title "[AI Task] $TARGET" \
+            --body "Yerel GitHub-hosted açık model tarafından üretilen görev çıktısı. Test raporları reports/ klasöründedir. Manuel inceleme gereklidir."
+
+      - name: Review pull request
+        if: env.OPERATION == 'review-pr'
+        shell: bash
+        run: |
+          if [[ ! "$TARGET" =~ ^[0-9]+$ ]]; then
+            echo "::error::Review için Target alanı PR numarası olmalı."
+            exit 64
+          fi
+
+          python -m engine.review_pr "$TARGET"
+
+      - name: Stop local model
+        if: always()
+        shell: bash
+        run: bash scripts/stop_engine.sh . || true
+
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "### Kreative Core Company Control"
+            echo
+            echo "- Operation: \`$OPERATION\`"
+            echo "- Target: \`$TARGET\`"
+            echo "- Agent: \`$AGENT\`"
+            echo "- Model API cost: **none**"
+          } >> "$GITHUB_STEP_SUMMARY"
