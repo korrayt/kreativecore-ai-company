@@ -1,0 +1,87 @@
+[project]
+name = "OC — Yerel-First Kişisel AI Çalışma Alanı"
+objective = "Kullanıcının projelerini, dosyalarını, fikirlerini ve görevlerini tek bir masaüstü çalışma alanında yöneten; internet bağlantısı olmasa da temel işlevlerini sürdürebilen; yerel yapay zekâ modelleriyle çalışan güvenli ve modüler bir kişisel AI sistemi geliştirmek."
+desired_outcome = "Windows üzerinde çalışan kurulum yapılabilir bir masaüstü uygulaması; yerel model bağlantısı, proje hafızası, dosya okuma, görev planlama, izin kontrollü araç kullanımı ve açık hata davranışına sahip çalışan bir MVP."
+type = "ai"
+priority = "P1"
+stage = "discovery"
+owner = "@korrayt"
+departments = ["auto"]
+auto_analyze = false
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Öncelikle Koray Taşan; daha sonra yaratıcı üreticiler, bağımsız çalışanlar ve kişisel verilerini dış servislerle paylaşmadan AI kullanmak isteyen kullanıcılar."
+problem = "Mevcut AI araçları proje bağlamını parçalı tutuyor, kullanıcı dosyalarını dış servislerle paylaşabiliyor, çevrimdışı çalışmıyor ve farklı projeler arasında kalıcı ve kontrollü bir hafıza sunmuyor."
+constraints = "Harici ücretli AI API zorunluluğu olmayacak. Sistem local-first olacak. Kullanıcı izni olmadan dosya değiştirmeyecek, komut çalıştırmayacak veya veri paylaşmayacak. Windows öncelikli olacak. İlk sürüm küçük, kurulabilir ve test edilebilir tutulacak. Production secret, müşteri verisi veya kişisel hassas veri repoya yazılmayacak."
+success_signal = "Kullanıcı uygulamayı Windows üzerinde kurabilir; yerel bir model bağlayabilir; yeni proje oluşturabilir; proje klasöründen dosya okuyabilir; sohbet geçmişini ve proje hafızasını yerelde tutabilir; izin verilen tek bir aracı güvenli şekilde çalıştırabilir; hata olduğunda nedenini açıkça görebilir."
+references = "Mevcut core-I ve OC fikirleri; Tauri tabanlı masaüstü uygulama yaklaşımı; Ollama veya llama.cpp uyumlu yerel model bağlantısı; Project Memory, Local File Reader, Diagnostics, Permission Manager, Tool Runner ve Repository Connector modülleri."
+
+[product]
+product_name = "OC"
+positioning = "Kullanıcının bilgisayarında yaşayan, projelerini tanıyan ve kontrolü kullanıcıda bırakan kişisel AI çalışma alanı."
+core_value = "Bağlam, mahremiyet, süreklilik ve kullanıcı kontrolü."
+first_platform = "Windows desktop"
+distribution = "Installer"
+commercial_model = "İlk aşamada belirsiz; ürün doğrulandıktan sonra lisanslı masaüstü uygulama veya ücretsiz çekirdek + ücretli paketler değerlendirilecek."
+
+[mvp]
+scope = [
+  "Tauri tabanlı Windows masaüstü uygulaması",
+  "Yerel model sağlayıcısı bağlantısı",
+  "Basit model seçimi ve bağlantı testi",
+  "Yerel sohbet ekranı",
+  "Yeni proje oluşturma",
+  "Proje klasörü seçme",
+  "Metin ve Markdown dosyalarını okuma",
+  "Yerel proje hafızası",
+  "SQLite veya eşdeğer yerel veri tabanı",
+  "Açık hata ve diagnostics ekranı",
+  "Araç izin sistemi",
+  "Tek bir güvenli tool-runner prototipi",
+  "Kurulum paketi"
+]
+out_of_scope = [
+  "Bulut senkronizasyonu",
+  "Mobil uygulama",
+  "Tam otonom bilgisayar kontrolü",
+  "İzinsiz shell komutu çalıştırma",
+  "Kullanıcı onayı olmadan dosya yazma",
+  "Çok kullanıcılı kurumsal yapı",
+  "Ödeme sistemi",
+  "Marketplace",
+  "Genel amaçlı sınırsız agent sistemi"
+]
+
+[technical]
+preferred_stack = [
+  "Tauri",
+  "Rust",
+  "TypeScript",
+  "React",
+  "SQLite",
+  "Ollama veya llama.cpp uyumlu local inference"
+]
+architecture_principles = [
+  "Local-first",
+  "Offline-capable",
+  "Permission-based",
+  "Modular",
+  "Observable",
+  "Reversible actions",
+  "Explicit errors",
+  "No silent data sharing"
+]
+
+[approval]
+required_for = [
+  "Dosya yazma veya silme",
+  "Shell veya sistem komutu",
+  "Harici ağ bağlantısı",
+  "Repository push veya pull request",
+  "Lisanslama kararı",
+  "Fiyatlandırma",
+  "Kullanıcı verisi toplama",
+  "Production release"
+]
