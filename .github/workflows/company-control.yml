@@ -61,7 +61,8 @@ jobs:
 
     env:
       GH_TOKEN: ${{ github.token }}
-      ENGINE_TAG: ai-engine-v1
+      ENGINE_TAG: ai-engine-v2
+      ENGINE_RELEASE_TAG: ai-engine-v2
       MODEL_REPO: Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF
       MODEL_FILE: qwen2.5-coder-1.5b-instruct-q4_k_m.gguf
 
@@ -201,23 +202,49 @@ jobs:
           )
           PY
 
-      - name: Create or update engine release
+      - name: Create or verify engine release
         if: env.OPERATION == 'bootstrap-engine'
         shell: bash
         run: |
           set -euo pipefail
 
-          if ! gh release view "$ENGINE_TAG" >/dev/null 2>&1; then
-            gh release create "$ENGINE_TAG" \
-              --title "Kreative Core AI Engine v1" \
-              --notes "Open model and llama.cpp CPU runtime assets."
-          fi
+          required_assets=(
+            "qwen2.5-coder-1.5b-instruct-q4_k_m.gguf"
+            "llama-cpp-ubuntu-x64.tar.gz"
+            "engine-manifest.json"
+          )
 
-          gh release upload "$ENGINE_TAG" \
-            engine-assets/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf \
-            engine-assets/llama-cpp-ubuntu-x64.tar.gz \
-            engine-assets/engine-manifest.json \
-            --clobber
+          if gh release view "$ENGINE_TAG" >/dev/null 2>&1; then
+            echo "Release $ENGINE_TAG already exists; verifying assets."
+
+            existing_assets="$(
+              gh release view "$ENGINE_TAG" \
+                --json assets \
+                --jq '.assets[].name'
+            )"
+
+            for asset in "${required_assets[@]}"; do
+              if ! grep -Fxq "$asset" <<< "$existing_assets"; then
+                echo "::error::Existing immutable release is incomplete: $asset is missing."
+                exit 1
+              fi
+            done
+
+            echo "Existing engine release is complete."
+          else
+            gh release create "$ENGINE_TAG" \
+              --draft \
+              --title "Kreative Core AI Engine v2" \
+              --notes "Open model and llama.cpp CPU runtime assets."
+
+            gh release upload "$ENGINE_TAG" \
+              engine-assets/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf \
+              engine-assets/llama-cpp-ubuntu-x64.tar.gz \
+              engine-assets/engine-manifest.json
+
+            gh release edit "$ENGINE_TAG" --draft=false
+            echo "Engine release published after all assets were attached."
+          fi
 
       - name: Restore engine cache
         if: >-
