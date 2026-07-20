@@ -1,0 +1,36 @@
+[automation]
+daily_scan_utc = "05:00"
+timezone_note = "05:00 UTC = Türkiye için 08:00"
+default_auto_execute = false
+max_departments_per_project = 12
+create_department_issues = true
+create_analysis_issue = true
+create_planning_issue = true
+
+[approval]
+always_require_owner = [
+  "finance",
+  "legal-compliance",
+  "security-trust",
+  "people-culture",
+  "corporate-communications",
+  "international-growth",
+  "hardware-physical-products"
+]
+sensitive_actions = [
+  "production-deploy",
+  "public-release",
+  "payment-change",
+  "price-change",
+  "legal-publication",
+  "credential-change",
+  "repository-delete",
+  "data-migration",
+  "product-cancellation"
+]
+
+[execution]
+issue_creation = "automatic"
+department_routing = "automatic"
+copilot_assignment = "manual-by-default"
+copilot_assignment_secret = "LOCAL_AI_ENGINE"

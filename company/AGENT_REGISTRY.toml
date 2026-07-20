@@ -1,0 +1,252 @@
+# Kreative Core custom-agent registry
+
+[[agents]]
+id = "orchestrator"
+name = "Company Orchestrator"
+kind = "core"
+file = ".github/agents/orchestrator.agent.md"
+description = "Yeni proje ve görevleri şirket sistemine alır, analiz akışını başlatır ve departmanlar arası koordinasyonu yönetir."
+
+[[agents]]
+id = "executive"
+name = "Executive"
+kind = "core"
+file = ".github/agents/executive.agent.md"
+description = "Stratejik karar, öncelik, portföy ve kurucu onayı gerektiren konuları yönetir."
+
+[[agents]]
+id = "planner"
+name = "Planner"
+kind = "core"
+file = ".github/agents/planner.agent.md"
+description = "Hedefleri aşamalı yol haritasına, kilometre taşlarına ve bağımlı görevlere dönüştürür."
+
+[[agents]]
+id = "analyst"
+name = "Analyst"
+kind = "core"
+file = ".github/agents/analyst.agent.md"
+description = "Proje klasörünü, mevcut belgeleri, riskleri ve ihtiyaçları analiz ederek ilk şirket değerlendirmesini üretir."
+
+[[agents]]
+id = "researcher"
+name = "Researcher"
+kind = "core"
+file = ".github/agents/researcher.agent.md"
+description = "Kaynak, alternatif çözüm, teknoloji ve pazar araştırmasını planlar ve doğrulanabilir bulgular üretir."
+
+[[agents]]
+id = "product"
+name = "Product"
+kind = "core"
+file = ".github/agents/product.agent.md"
+description = "Kullanıcı problemini, ürün değerini, kapsamı ve kabul kriterlerini netleştirir."
+
+[[agents]]
+id = "architect"
+name = "Architect"
+kind = "core"
+file = ".github/agents/architect.agent.md"
+description = "Sistem mimarisini, entegrasyonları, veri akışını ve teknik sınırları tasarlar."
+
+[[agents]]
+id = "coder"
+name = "Coder"
+kind = "core"
+file = ".github/agents/coder.agent.md"
+description = "Onaylı teknik planı küçük, test edilebilir ve geri alınabilir kod değişikliklerine dönüştürür."
+
+[[agents]]
+id = "designer"
+name = "Designer"
+kind = "core"
+file = ".github/agents/designer.agent.md"
+description = "Arayüz, deneyim, görsel dil ve yaratıcı çıktıları kullanıcı odaklı biçimde tasarlar."
+
+[[agents]]
+id = "reviewer"
+name = "Tester / Reviewer"
+kind = "core"
+file = ".github/agents/reviewer.agent.md"
+description = "Kod, belge, tasarım ve süreç çıktısını bağımsız olarak test eder ve doğrular."
+
+[[agents]]
+id = "operator"
+name = "Operator"
+kind = "core"
+file = ".github/agents/operator.agent.md"
+description = "Günlük şirket akışını, issue durumlarını, blokajları ve tekrar eden süreçleri takip eder."
+
+[[agents]]
+id = "growth"
+name = "Growth"
+kind = "core"
+file = ".github/agents/growth.agent.md"
+description = "Kullanıcı, dağıtım, gelir ve öğrenme döngülerini ölçülebilir büyüme planına dönüştürür."
+
+[[agents]]
+id = "security-ethics"
+name = "Security & Ethics"
+kind = "core"
+file = ".github/agents/security-ethics.agent.md"
+description = "Güvenlik, mahremiyet, etik, hukuki sınırlar ve zarar risklerini korur."
+
+[[agents]]
+id = "dept-01-management-strategy"
+name = "Yönetim ve Strateji"
+kind = "department"
+department = "management-strategy"
+file = ".github/agents/dept-01-management-strategy.agent.md"
+description = "Yönetim ve Strateji departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-02-product-planning"
+name = "Ürün ve Planlama"
+kind = "department"
+department = "product-planning"
+file = ".github/agents/dept-02-product-planning.agent.md"
+description = "Ürün ve Planlama departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-03-technology-software"
+name = "Yazılım ve Teknoloji"
+kind = "department"
+department = "technology-software"
+file = ".github/agents/dept-03-technology-software.agent.md"
+description = "Yazılım ve Teknoloji departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-04-ai-data-analytics"
+name = "Yapay Zekâ, Veri ve Analitik"
+kind = "department"
+department = "ai-data-analytics"
+file = ".github/agents/dept-04-ai-data-analytics.agent.md"
+description = "Yapay Zekâ, Veri ve Analitik departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-05-rnd-innovation"
+name = "Ar-Ge ve İnovasyon"
+kind = "department"
+department = "rnd-innovation"
+file = ".github/agents/dept-05-rnd-innovation.agent.md"
+description = "Ar-Ge ve İnovasyon departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-06-design-creative"
+name = "Tasarım ve Kreatif"
+kind = "department"
+department = "design-creative"
+file = ".github/agents/dept-06-design-creative.agent.md"
+description = "Tasarım ve Kreatif departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-07-quality-testing"
+name = "Kalite ve Test"
+kind = "department"
+department = "quality-testing"
+file = ".github/agents/dept-07-quality-testing.agent.md"
+description = "Kalite ve Test departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-08-security-trust"
+name = "Siber Güvenlik ve Güven"
+kind = "department"
+department = "security-trust"
+file = ".github/agents/dept-08-security-trust.agent.md"
+description = "Siber Güvenlik ve Güven departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-09-marketing"
+name = "Pazarlama"
+kind = "department"
+department = "marketing"
+file = ".github/agents/dept-09-marketing.agent.md"
+description = "Pazarlama departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-10-sales"
+name = "Satış"
+kind = "department"
+department = "sales"
+file = ".github/agents/dept-10-sales.agent.md"
+description = "Satış departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-11-customer-experience"
+name = "Müşteri Departmanları"
+kind = "department"
+department = "customer-experience"
+file = ".github/agents/dept-11-customer-experience.agent.md"
+description = "Müşteri Departmanları departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-12-operations"
+name = "Operasyon"
+kind = "department"
+department = "operations"
+file = ".github/agents/dept-12-operations.agent.md"
+description = "Operasyon departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-13-finance"
+name = "Finans"
+kind = "department"
+department = "finance"
+file = ".github/agents/dept-13-finance.agent.md"
+description = "Finans departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-14-people-culture"
+name = "İnsan ve Kültür"
+kind = "department"
+department = "people-culture"
+file = ".github/agents/dept-14-people-culture.agent.md"
+description = "İnsan ve Kültür departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-15-legal-compliance"
+name = "Hukuk ve Uyum"
+kind = "department"
+department = "legal-compliance"
+file = ".github/agents/dept-15-legal-compliance.agent.md"
+description = "Hukuk ve Uyum departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-16-corporate-communications"
+name = "Kurumsal İletişim"
+kind = "department"
+department = "corporate-communications"
+file = ".github/agents/dept-16-corporate-communications.agent.md"
+description = "Kurumsal İletişim departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-17-community-devrel"
+name = "Topluluk, Ekosistem ve Geliştirici İlişkileri"
+kind = "department"
+department = "community-devrel"
+file = ".github/agents/dept-17-community-devrel.agent.md"
+description = "Topluluk, Ekosistem ve Geliştirici İlişkileri departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-18-international-growth"
+name = "Uluslararası Büyüme"
+kind = "department"
+department = "international-growth"
+file = ".github/agents/dept-18-international-growth.agent.md"
+description = "Uluslararası Büyüme departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-19-sustainability-impact"
+name = "Sürdürülebilirlik ve Sosyal Etki"
+kind = "department"
+department = "sustainability-impact"
+file = ".github/agents/dept-19-sustainability-impact.agent.md"
+description = "Sürdürülebilirlik ve Sosyal Etki departmanının görevlerini yürütür."
+
+[[agents]]
+id = "dept-20-hardware-physical-products"
+name = "Fiziksel Ürün ve Donanım"
+kind = "department"
+department = "hardware-physical-products"
+file = ".github/agents/dept-20-hardware-physical-products.agent.md"
+description = "Fiziksel Ürün ve Donanım departmanının görevlerini yürütür."

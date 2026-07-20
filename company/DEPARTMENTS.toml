@@ -1,0 +1,162 @@
+# Kreative Core department registry
+# Generated from the founder's requested company structure.
+
+[[departments]]
+id = "management-strategy"
+number = 1
+name = "Yönetim ve Strateji"
+agent = "dept-01-management-strategy"
+keywords = ["ceo", "strateji", "iş planı", "is plani", "portföy", "portfolio", "proje yönetimi", "program yönetimi", "ortaklık", "yatırımcı", "okr", "iş geliştirme", "business development", "kurumsal gelişim"]
+capabilities = ["Kurucu ekip / CEO Ofisi", "Genel Yönetim", "Strateji ve İş Planlama", "Operasyon Yönetimi", "Program / Portföy Yönetimi", "Proje Yönetimi", "İş Geliştirme", "Kurumsal Gelişim", "Ortaklıklar ve Stratejik İş Birlikleri", "Yönetim Kurulu İlişkileri", "Yatırımcı İlişkileri", "OKR / Performans Yönetimi"]
+
+[[departments]]
+id = "product-planning"
+number = 2
+name = "Ürün ve Planlama"
+agent = "dept-02-product-planning"
+keywords = ["ürün", "product", "roadmap", "kullanıcı", "user research", "ux", "ui", "prototip", "monetizasyon", "fiyatlandırma", "product growth", "ürün analitiği", "ürün stratejisi"]
+capabilities = ["Ürün Yönetimi", "Ürün Stratejisi", "Ürün Operasyonları", "Ürün Analitiği", "Ürün Araştırması", "Kullanıcı Araştırması", "Ürün Tasarımı", "UX Tasarımı", "UI Tasarımı", "UX Writing / İçerik Tasarımı", "Prototipleme", "Ürün Büyümesi / Product Growth", "Ürün Pazarlaması", "Monetizasyon ve Fiyatlandırma"]
+
+[[departments]]
+id = "technology-software"
+number = 3
+name = "Yazılım ve Teknoloji"
+agent = "dept-03-technology-software"
+keywords = ["yazılım", "software", "frontend", "backend", "full-stack", "fullstack", "mobile", "mobil", "desktop", "masaüstü", "api", "entegrasyon", "architecture", "mimari", "devops", "cloud", "database", "veritabanı", "network", "platform", "sre", "developer tools", "typescript", "python", "javascript", "react", "node", "rust", "tauri", "github"]
+capabilities = ["Yazılım Geliştirme", "Frontend", "Backend", "Mobil Uygulama", "Full-stack", "Masaüstü Uygulama", "API ve Entegrasyon", "Sistem Mimarisi", "Platform Engineering", "DevOps", "Cloud / Bulut Sistemleri", "Site Reliability Engineering", "Veritabanı Yönetimi", "Altyapı ve Ağ Sistemleri", "İç Araçlar / Developer Tools", "Teknik Dokümantasyon", "Açık Kaynak Yönetimi", "Teknik Destek"]
+
+[[departments]]
+id = "ai-data-analytics"
+number = 4
+name = "Yapay Zekâ, Veri ve Analitik"
+agent = "dept-04-ai-data-analytics"
+keywords = ["ai", "yapay zekâ", "yapay zeka", "llm", "model", "machine learning", "makine öğrenmesi", "data", "veri", "analytics", "analitik", "dashboard", "prompt", "mlops", "embedding", "vector", "tahmin", "optimizasyon", "a/b", "deney", "business intelligence", "iş zekâsı"]
+capabilities = ["Veri Analitiği", "İş Zekâsı", "Veri Bilimi", "Veri Mühendisliği", "Makine Öğrenmesi", "Yapay Zekâ Mühendisliği", "Generative AI / LLM", "Model Eğitimi", "Model Değerlendirme", "Prompt Engineering", "MLOps", "Veri Etiketleme", "Veri Kalitesi", "Karar Bilimi", "Tahminleme ve Optimizasyon", "Deney / A-B Testleri", "Raporlama ve Dashboard"]
+
+[[departments]]
+id = "rnd-innovation"
+number = 5
+name = "Ar-Ge ve İnovasyon"
+agent = "dept-05-rnd-innovation"
+keywords = ["ar-ge", "arge", "r&d", "research", "araştırma", "inovasyon", "teknoloji araştırması", "prototip laboratuvarı", "patent", "hibe", "teşvik", "foresight", "gelecek araştırmaları", "deneysel"]
+capabilities = ["Araştırma ve Geliştirme", "Temel Araştırma", "Uygulamalı Araştırma", "İnovasyon Yönetimi", "Teknoloji Araştırması", "Prototip Laboratuvarı", "Yeni Ürün Geliştirme", "Patent ve Fikri Mülkiyet", "Akademik İş Birlikleri", "Hibe ve Teşvik Projeleri", "Gelecek Araştırmaları / Foresight", "Deneysel Projeler"]
+
+[[departments]]
+id = "design-creative"
+number = 6
+name = "Tasarım ve Kreatif"
+agent = "dept-06-design-creative"
+keywords = ["tasarım", "design", "grafik", "visual", "görsel", "motion", "3d", "video", "kurgu", "post-prodüksiyon", "post production", "fotoğraf", "ses", "audio", "müzik", "creative", "kreatif", "art direction", "sanat yönetimi", "copywriting", "metin", "oyun tasarımı"]
+capabilities = ["Marka Tasarımı", "Grafik Tasarım", "Görsel İletişim", "Motion Design", "3D Tasarım", "Video Prodüksiyon", "Kurgu ve Post-prodüksiyon", "Fotoğraf", "Ses Tasarımı", "Müzik Prodüksiyonu", "Kreatif Strateji", "Sanat Yönetimi", "Metin Yazarlığı", "İçerik Tasarımı", "Deneyim Tasarımı", "Oyun Tasarımı"]
+
+[[departments]]
+id = "quality-testing"
+number = 7
+name = "Kalite ve Test"
+agent = "dept-07-quality-testing"
+keywords = ["qa", "test", "testing", "kalite", "bug", "hata", "performans testi", "otomasyon testi", "compatibility", "uyumluluk", "release", "sürüm", "usability", "kullanılabilirlik"]
+capabilities = ["Kalite Güvence / QA", "Manuel Test", "Test Otomasyonu", "Performans Testleri", "Güvenlik Testleri", "Kullanılabilirlik Testleri", "Cihaz / Tarayıcı Uyumluluğu", "Sürüm Yönetimi", "Hata Yönetimi", "Kalite Standartları", "Süreç Kalitesi"]
+
+[[departments]]
+id = "security-trust"
+number = 8
+name = "Siber Güvenlik ve Güven"
+agent = "dept-08-security-trust"
+keywords = ["security", "güvenlik", "privacy", "gizlilik", "kvkk", "gdpr", "identity", "iam", "fraud", "dolandırıcılık", "risk", "trust", "moderation", "moderasyon", "disaster recovery", "felaket kurtarma", "business continuity", "iş sürekliliği"]
+capabilities = ["Bilgi Güvenliği", "Uygulama Güvenliği", "Altyapı Güvenliği", "Güvenlik Operasyonları", "Kimlik ve Erişim Yönetimi", "Dolandırıcılık Önleme", "Risk Yönetimi", "Gizlilik", "Veri Koruma", "Güven ve Emniyet / Trust & Safety", "İçerik Moderasyonu", "Güvenlik Denetimleri", "İş Sürekliliği", "Felaket Kurtarma"]
+
+[[departments]]
+id = "marketing"
+number = 9
+name = "Pazarlama"
+agent = "dept-09-marketing"
+keywords = ["marketing", "pazarlama", "brand", "marka", "growth marketing", "sosyal medya", "content marketing", "içerik pazarlaması", "seo", "aso", "email", "influencer", "kampanya", "reklam", "media planning", "pr", "müşteri içgörüleri"]
+capabilities = ["Marka Yönetimi", "Pazarlama Stratejisi", "Dijital Pazarlama", "Performans Pazarlaması", "Growth Marketing", "Sosyal Medya", "İçerik Pazarlaması", "SEO", "ASO", "E-posta Pazarlaması", "Influencer Pazarlaması", "Topluluk Pazarlaması", "Etkinlik ve Sponsorluk", "Medya Planlama", "Reklam ve Kreatif", "Kampanya Yönetimi", "Pazarlama Analitiği", "Müşteri İçgörüleri", "Ürün Pazarlaması", "İletişim ve PR"]
+
+[[departments]]
+id = "sales"
+number = 10
+name = "Satış"
+agent = "dept-10-sales"
+keywords = ["sales", "satış", "b2b", "b2c", "enterprise", "kurumsal satış", "channel", "kanal", "distribütör", "bayi", "sdr", "teklif", "ihale", "presales", "revops", "crm", "gelir operasyonları"]
+capabilities = ["Satış Stratejisi", "B2B Satış", "B2C Satış", "Kurumsal Satış", "Saha Satışı", "İç Satış", "Kanal Satışları", "Bayi ve Distribütör Yönetimi", "Satış Operasyonları", "Satış Geliştirme / SDR", "Teklif ve İhale Yönetimi", "Çözüm Satışları", "Presales", "Satış Mühendisliği", "Gelir Operasyonları / RevOps", "CRM Yönetimi", "Satış Analitiği"]
+
+[[departments]]
+id = "customer-experience"
+number = 11
+name = "Müşteri Departmanları"
+agent = "dept-11-customer-experience"
+keywords = ["customer", "müşteri", "support", "destek", "success", "başarı", "onboarding", "eğitim", "academy", "hesap yönetimi", "account", "şikâyet", "şikayet", "loyalty", "sadakat", "churn", "community", "voice of customer"]
+capabilities = ["Müşteri Deneyimi", "Müşteri Başarısı", "Müşteri Destek", "Teknik Destek", "Çağrı Merkezi", "Onboarding", "Eğitim ve Akademi", "Hesap Yönetimi", "Key Account Management", "Müşteri Operasyonları", "Şikâyet Yönetimi", "Sadakat ve Tutundurma", "Churn Önleme", "Müşteri Topluluğu", "Voice of Customer"]
+
+[[departments]]
+id = "operations"
+number = 12
+name = "Operasyon"
+agent = "dept-12-operations"
+keywords = ["operations", "operasyon", "process", "süreç", "automation", "otomasyon", "capacity", "kapasite", "demand planning", "talep planlama", "supply chain", "tedarik", "procurement", "satın alma", "lojistik", "warehouse", "depo", "inventory", "envanter", "production", "üretim", "maintenance", "bakım", "facility", "tesis"]
+capabilities = ["İş Operasyonları", "Ürün Operasyonları", "Saha Operasyonları", "Hizmet Operasyonları", "Süreç Yönetimi", "Süreç İyileştirme", "Otomasyon", "Kapasite Planlama", "Talep Planlama", "Tedarik Zinciri", "Satın Alma", "Lojistik", "Depo Yönetimi", "Envanter Yönetimi", "Üretim Operasyonları", "Kurulum ve Bakım", "Tesis Yönetimi", "İş Sürekliliği"]
+
+[[departments]]
+id = "finance"
+number = 13
+name = "Finans"
+agent = "dept-13-finance"
+keywords = ["finance", "finans", "accounting", "muhasebe", "budget", "bütçe", "cash flow", "nakit akışı", "treasury", "hazine", "tax", "vergi", "billing", "faturalama", "tahsilat", "payment", "ödeme", "funding", "fonlama", "yatırım", "m&a", "maliyet", "financial risk"]
+capabilities = ["Finansal Planlama ve Analiz", "Muhasebe", "Bütçe ve Raporlama", "Nakit Akışı Yönetimi", "Hazine", "Vergi", "Maliyet Muhasebesi", "Gelir Muhasebesi", "Faturalama ve Tahsilat", "Ödeme Operasyonları", "Finansal Kontrol", "İç Denetim", "Yatırım Analizi", "Fonlama ve Sermaye Yönetimi", "Birleşme ve Satın Alma", "Finansal Risk Yönetimi"]
+
+[[departments]]
+id = "people-culture"
+number = 14
+name = "İnsan ve Kültür"
+agent = "dept-14-people-culture"
+keywords = ["hr", "ik", "insan kaynakları", "recruitment", "işe alım", "talent", "çalışan", "employee", "culture", "kültür", "learning", "öğrenme", "performance", "performans", "payroll", "bordro", "diversity", "çeşitlilik", "inclusion", "kapsayıcılık", "iş sağlığı", "occupational safety"]
+capabilities = ["İnsan Kaynakları", "İşe Alım / Talent Acquisition", "Çalışan Deneyimi", "Organizasyonel Gelişim", "Öğrenme ve Gelişim", "Performans Yönetimi", "Ücret ve Yan Haklar", "Kariyer ve Yetenek Yönetimi", "Kültür ve İç İletişim", "İK Operasyonları", "Bordro ve Özlük", "İşveren Markası", "Çeşitlilik ve Kapsayıcılık", "Çalışan İlişkileri", "İş Sağlığı ve Güvenliği"]
+
+[[departments]]
+id = "legal-compliance"
+number = 15
+name = "Hukuk ve Uyum"
+agent = "dept-15-legal-compliance"
+keywords = ["legal", "hukuk", "contract", "sözleşme", "ticaret hukuku", "iş hukuku", "ip", "fikri mülkiyet", "kvkk", "gdpr", "regulation", "regülasyon", "compliance", "uyum", "ethics", "etik", "lisans", "izin", "dava", "uyuşmazlık"]
+capabilities = ["Hukuk", "Sözleşme Yönetimi", "Ticaret Hukuku", "İş Hukuku", "Fikri Mülkiyet", "KVKK / GDPR", "Regülasyon", "Uyum / Compliance", "Etik", "İç Politika Yönetimi", "Lisanslama ve İzinler", "Resmî Kurum İlişkileri", "Kurumsal Sekreterya", "Dava ve Uyuşmazlık Yönetimi"]
+
+[[departments]]
+id = "corporate-communications"
+number = 16
+name = "Kurumsal İletişim"
+agent = "dept-16-corporate-communications"
+keywords = ["corporate communication", "kurumsal iletişim", "public relations", "halkla ilişkiler", "basın", "press", "internal communication", "iç iletişim", "crisis communication", "kriz iletişimi", "reputation", "itibar", "stakeholder", "paydaş", "government relations"]
+capabilities = ["Halkla İlişkiler", "Basın İlişkileri", "Kurumsal İletişim", "İç İletişim", "Kriz İletişimi", "İtibar Yönetimi", "Yönetici İletişimi", "Sosyal Etki İletişimi", "Kamu İlişkileri", "Hükûmet İlişkileri", "Paydaş Yönetimi"]
+
+[[departments]]
+id = "community-devrel"
+number = 17
+name = "Topluluk, Ekosistem ve Geliştirici İlişkileri"
+agent = "dept-17-community-devrel"
+keywords = ["community", "topluluk", "devrel", "developer relations", "ecosystem", "ekosistem", "partner", "startup", "ambassador", "elçi", "hackathon", "yarışma", "documentation", "dokümantasyon", "api community", "kullanıcı grubu"]
+capabilities = ["Topluluk Yönetimi", "Developer Relations", "Partner Ekosistemi", "Startup Ekosistemi", "Elçi / Ambassador Programları", "Etkinlik Yönetimi", "Hackathon ve Yarışmalar", "Eğitim İçerikleri", "Dokümantasyon", "API Topluluğu", "Kullanıcı Grupları"]
+
+[[departments]]
+id = "international-growth"
+number = 18
+name = "Uluslararası Büyüme"
+agent = "dept-18-international-growth"
+keywords = ["global", "globalleşme", "international", "uluslararası", "market entry", "pazar açılımı", "localization", "yerelleştirme", "translation", "çeviri", "country", "ülke", "export", "ihracat", "regional", "bölgesel", "cultural adaptation", "kültürel uyum"]
+capabilities = ["Globalleşme Stratejisi", "Yeni Pazar Açılımı", "Yerelleştirme", "Çeviri", "Bölgesel Operasyonlar", "Ülke Yönetimi", "İhracat", "Uluslararası Satış", "Uluslararası Pazarlama", "Kültürel Uyum", "Global Hukuk ve Regülasyon"]
+
+[[departments]]
+id = "sustainability-impact"
+number = 19
+name = "Sürdürülebilirlik ve Sosyal Etki"
+agent = "dept-19-sustainability-impact"
+keywords = ["sustainability", "sürdürülebilirlik", "esg", "social impact", "sosyal etki", "environment", "çevre", "carbon", "karbon", "accessibility", "erişilebilirlik", "ethical technology", "etik teknoloji", "inclusive design", "kapsayıcı tasarım", "human rights", "insan hakları"]
+capabilities = ["Sürdürülebilirlik", "ESG", "Sosyal Etki", "Çevre Yönetimi", "Karbon Yönetimi", "Erişilebilirlik", "Etik Teknoloji", "Sosyal Sorumluluk", "Etki Ölçümü", "Kapsayıcı Tasarım", "İnsan Hakları ve Tedarikçi Etiği"]
+
+[[departments]]
+id = "hardware-physical-products"
+number = 20
+name = "Fiziksel Ürün ve Donanım"
+agent = "dept-20-hardware-physical-products"
+keywords = ["hardware", "donanım", "industrial design", "endüstriyel tasarım", "electronics", "elektronik", "mechanical", "mekanik", "embedded", "gömülü", "robotics", "robotik", "manufacturing", "üretim mühendisliği", "material", "malzeme", "kalıp", "certification", "sertifikasyon", "supplier quality", "tedarikçi kalitesi", "technical service"]
+capabilities = ["Endüstriyel Tasarım", "Donanım Mühendisliği", "Elektronik", "Mekanik", "Gömülü Sistemler", "Robotik", "Prototipleme", "Üretim Mühendisliği", "Malzeme Araştırması", "Kalıp ve Üretim", "Ürün Sertifikasyonu", "Tedarikçi Kalitesi", "Bakım ve Teknik Servis"]

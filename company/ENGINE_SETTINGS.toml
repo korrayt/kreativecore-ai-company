@@ -1,0 +1,36 @@
+[engine]
+release_tag = "ai-engine-v1"
+cache_key = "kreativecore-ai-engine-v1"
+max_context_files = 14
+max_chars_per_file = 7000
+max_total_context_chars = 70000
+max_write_files = 12
+max_write_bytes = 160000
+
+[budget]
+monthly_ai_job_soft_limit = 45
+monthly_ai_minutes_soft_limit = 1800
+
+[safety]
+protected_prefixes = [
+  ".git/",
+  ".github/workflows/",
+  "engine/",
+  "company/",
+  "models/",
+  "LICENSES/"
+]
+owner_approval_departments = [
+  "finance",
+  "legal-compliance",
+  "security-trust",
+  "people-culture",
+  "corporate-communications",
+  "international-growth",
+  "hardware-physical-products"
+]
+
+[checks]
+python = ["python -m pytest -q"]
+node = ["npm test -- --runInBand", "npm run lint", "npm run build"]
+generic = ["python engine/validate_repo.py ."]
