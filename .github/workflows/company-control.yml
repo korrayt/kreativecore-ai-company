@@ -1,3 +1,5 @@
+name: Kreative Core Company Control
+
 on:
   workflow_dispatch:
     inputs:
@@ -12,6 +14,7 @@ on:
           - scan-intake
           - analyze-project
           - execute-task
+          - auto-cycle
           - review-pr
       target:
         description: Proje slug, görev slug/issue numarası veya PR numarası
@@ -41,6 +44,7 @@ on:
 
   schedule:
     - cron: "0 5 * * *"
+    - cron: "17 */6 * * *"
 
 permissions:
   contents: write
@@ -83,7 +87,11 @@ jobs:
           set -euo pipefail
 
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
-            operation="scan-intake"
+            if [[ "${{ github.event.schedule }}" == "0 5 * * *" ]]; then
+              operation="scan-intake"
+            else
+              operation="auto-cycle"
+            fi
             target=""
             agent="operator"
           else
@@ -109,6 +117,11 @@ jobs:
           printf 'OPERATION=%s\n' "$operation" >> "$GITHUB_ENV"
           printf 'TARGET=%s\n' "$target" >> "$GITHUB_ENV"
           printf 'AGENT=%s\n' "$agent" >> "$GITHUB_ENV"
+
+      - name: Select next automatic issue
+        if: env.OPERATION == 'auto-cycle'
+        shell: bash
+        run: python scripts/company_dispatcher.py
 
       - name: Install model downloader
         if: env.OPERATION == 'bootstrap-engine'
@@ -415,11 +428,29 @@ jobs:
           git commit -m "feat(ai): execute task $TARGET"
           git push --set-upstream origin "$AI_BRANCH"
 
-          gh pr create \
-            --base "${{ github.event.repository.default_branch }}" \
-            --head "$AI_BRANCH" \
-            --title "[AI Task] $TARGET" \
-            --body "Yerel GitHub-hosted açık model tarafından üretilen görev çıktısı. Test raporları reports/ klasöründedir. Runtime, model ve cache dosyaları commit dışında bırakılmıştır. Manuel inceleme gereklidir."
+          pr_url="$(
+            gh pr create \
+              --base "${{ github.event.repository.default_branch }}" \
+              --head "$AI_BRANCH" \
+              --title "[AI Task] $TARGET" \
+              --body "Yerel GitHub-hosted açık model tarafından üretilen görev çıktısı. Test raporları reports/ klasöründedir. Runtime, model ve cache dosyaları commit dışında bırakılmıştır. Manuel inceleme gereklidir."
+          )"
+
+          echo "Created pull request: $pr_url"
+
+          if [[ "$TARGET" =~ ^[0-9]+$ ]]; then
+            gh label create "status:review" \
+              --color "1D76DB" \
+              --description "AI output is waiting for human review or merge." \
+              --force
+
+            gh issue edit "$TARGET" \
+              --remove-label "status:running" \
+              --add-label "status:review" || true
+
+            gh issue comment "$TARGET" \
+              --body "AI çıktısı inceleme için hazır: $pr_url" || true
+          fi
 
       - name: Review pull request
         if: env.OPERATION == 'review-pr'
@@ -431,6 +462,16 @@ jobs:
           fi
 
           python -m engine.review_pr "$TARGET"
+
+      - name: Mark automatic issue blocked
+        if: failure() && env.AUTO_DISPATCH == 'true' && env.TARGET != ''
+        shell: bash
+        run: |
+          gh label create "status:blocked"             --color "B60205"             --description "Automatic execution stopped and needs attention."             --force
+
+          gh issue edit "$TARGET"             --remove-label "status:running"             --add-label "status:blocked" || true
+
+          gh issue comment "$TARGET"             --body "Otomatik yürütme başarısız oldu. Actions logunun incelenmesi gerekiyor." || true
 
       - name: Stop local model
         if: always()
