@@ -1,10 +1,9 @@
 {
   "reference": "4",
   "agent": "dept-02-product-planning",
-  "summary": "Review the project from the product-planning perspective. Produce the department-specific plan, required inputs, dependencies, acceptance criteria, risks, and the smallest next executable task.",
+  "summary": "dept-02-product-planning produced a reviewable project document.",
   "changed_files": [
-    "tasks/projects/ilk-projem/.company/PROJECT_STATE.json",
-    "tasks/projects/ilk-projem/.company/AI_ANALYSIS.json"
+    "tasks/projects/ilk-projem/.company/departments/dept-02-product-planning.md"
   ],
   "baseline_checks": [
     {
@@ -36,5 +35,9 @@
   ],
   "new_failures": [],
   "passed": true,
-  "notes": []
+  "notes": [
+    "Department agent was restricted to document-only mode.",
+    "Human review is required before merge.",
+    "Original output length: 29 characters."
+  ]
 }

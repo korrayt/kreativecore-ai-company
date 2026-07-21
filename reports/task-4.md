@@ -5,20 +5,21 @@
 
 ## Summary
 
-Review the project from the product-planning perspective. Produce the department-specific plan, required inputs, dependencies, acceptance criteria, risks, and the smallest next executable task.
+dept-02-product-planning produced a reviewable project document.
 
 ## Changed files
 
-- `tasks/projects/ilk-projem/.company/PROJECT_STATE.json`
-- `tasks/projects/ilk-projem/.company/AI_ANALYSIS.json`
+- `tasks/projects/ilk-projem/.company/departments/dept-02-product-planning.md`
 
 ## Notes
 
-- None
+- Department agent was restricted to document-only mode.
+- Human review is required before merge.
+- Original output length: 29 characters.
 
 ## Checks
 
-```json
+~~~json
 [
   {
     "command": "python engine/validate_repo.py .",
@@ -33,4 +34,4 @@ Review the project from the product-planning perspective. Produce the department
     "stderr": "/opt/hostedtoolcache/Python/3.12.13/x64/bin/python: No module named pytest\n"
   }
 ]
-```
+~~~
