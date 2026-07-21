@@ -1,1 +1,180 @@
-Update the project state to reflect the current status and progress of the project.
+{
+  "kind": "project",
+  "slug": "ilk-projem",
+  "name": "OC — Yerel-First Kişisel AI Çalışma Alanı",
+  "path": "tasks/projects/ilk-projem",
+  "objective": "Kullanıcının projelerini, dosyalarını, fikirlerini ve görevlerini tek bir masaüstü çalışma alanında yöneten; internet bağlantısı olmasa da temel işlevlerini sürdürebilen; yerel yapay zekâ modelleriyle çalışan güvenli ve modüler bir kişisel AI sistemi geliştirmek.",
+  "desired_outcome": "Windows üzerinde çalışan kurulum yapılabilir bir masaüstü uygulaması; yerel model bağlantısı, proje hafızası, dosya okuma, görev planlama, izin kontrollü araç kullanımı ve açık hata davranışına sahip çalışan bir MVP.",
+  "type": "ai",
+  "priority": "P1",
+  "stage": "discovery",
+  "owner": "@korrayt",
+  "auto_execute": false,
+  "owner_approval": true,
+  "manifest_present": true,
+  "manifest_parse_error": null,
+  "source_hash": "174848a361d730ce",
+  "file_count": 2,
+  "files": [
+    "BRIEF.md",
+    "PROJECT.toml"
+  ],
+  "departments": [
+    {
+      "id": "technology-software",
+      "name": "Yazılım ve Teknoloji",
+      "agent": "dept-03-technology-software",
+      "score": 68,
+      "reasons": [
+        "api",
+        "architecture",
+        "desktop",
+        "github",
+        "masaüstü",
+        "mimari",
+        "mobil",
+        "platform",
+        "react",
+        "rust",
+        "tauri",
+        "type:ai",
+        "typescript"
+      ]
+    },
+    {
+      "id": "product-planning",
+      "name": "Ürün ve Planlama",
+      "agent": "dept-02-product-planning",
+      "score": 52,
+      "reasons": [
+        "company-core",
+        "fiyatlandırma",
+        "kullanıcı",
+        "product",
+        "prototip",
+        "type:ai",
+        "ui",
+        "ürün"
+      ]
+    },
+    {
+      "id": "ai-data-analytics",
+      "name": "Yapay Zekâ, Veri ve Analitik",
+      "agent": "dept-04-ai-data-analytics",
+      "score": 50,
+      "reasons": [
+        "ai",
+        "data",
+        "model",
+        "type:ai",
+        "veri",
+        "yapay zekâ"
+      ]
+    },
+    {
+      "id": "quality-testing",
+      "name": "Kalite ve Test",
+      "agent": "dept-07-quality-testing",
+      "score": 44,
+      "reasons": [
+        "bug",
+        "hata",
+        "release",
+        "sürüm",
+        "test",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "legal-compliance",
+      "name": "Hukuk ve Uyum",
+      "agent": "dept-15-legal-compliance",
+      "score": 38,
+      "reasons": [
+        "etik",
+        "ip",
+        "izin",
+        "lisans",
+        "uyum"
+      ]
+    },
+    {
+      "id": "people-culture",
+      "name": "İnsan ve Kültür",
+      "agent": "dept-14-people-culture",
+      "score": 22,
+      "reasons": [
+        "hr",
+        "ik",
+        "çalışan"
+      ]
+    },
+    {
+      "id": "customer-experience",
+      "name": "Müşteri Departmanları",
+      "agent": "dept-11-customer-experience",
+      "score": 20,
+      "reasons": [
+        "başarı",
+        "destek",
+        "müşteri",
+        "success"
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "Operasyon",
+      "agent": "dept-12-operations",
+      "score": 20,
+      "reasons": [
+        "production",
+        "type:ai",
+        "üretim"
+      ]
+    },
+    {
+      "id": "security-trust",
+      "name": "Siber Güvenlik ve Güven",
+      "agent": "dept-08-security-trust",
+      "score": 18,
+      "reasons": [
+        "güvenlik",
+        "risk",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "design-creative",
+      "name": "Tasarım ve Kreatif",
+      "agent": "dept-06-design-creative",
+      "score": 12,
+      "reasons": [
+        "metin",
+        "müzik",
+        "ses",
+        "video"
+      ]
+    },
+    {
+      "id": "marketing",
+      "name": "Pazarlama",
+      "agent": "dept-09-marketing",
+      "score": 12,
+      "reasons": [
+        "pr",
+        "sosyal medya"
+      ]
+    },
+    {
+      "id": "rnd-innovation",
+      "name": "Ar-Ge ve İnovasyon",
+      "agent": "dept-05-rnd-innovation",
+      "score": 12,
+      "reasons": [
+        "arge",
+        "type:ai"
+      ]
+    }
+  ],
+  "updated_at": "2026-07-21T07:35:28.277628+00:00"
+}
