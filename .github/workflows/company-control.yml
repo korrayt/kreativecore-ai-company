@@ -1,5 +1,3 @@
-name: Kreative Core Company Control
-
 on:
   workflow_dispatch:
     inputs:
@@ -381,12 +379,38 @@ jobs:
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add --all
+          # Runtime/model/cache files must never enter a task commit.
+          rm -rf .engine-cache .engine-runtime
+          find . -type d -name "__pycache__" -prune -exec rm -rf {} +
+          find . -type f \( -name "*.pyc" -o -name "*.pyo" \) -delete
+
+          # Stage real repository changes while explicitly excluding generated
+          # runtime and cache paths. This still allows coder agents to modify
+          # legitimate application files outside tasks/ and reports/.
+          git add --all -- . \
+            ':(exclude).engine-cache/**' \
+            ':(exclude).engine-runtime/**' \
+            ':(exclude)**/__pycache__/**' \
+            ':(exclude)**/*.pyc' \
+            ':(exclude)**/*.pyo'
+
+          # Safety check: reject accidental large files before commit/push.
+          while IFS= read -r staged_file; do
+            [[ -f "$staged_file" ]] || continue
+            size="$(stat -c '%s' "$staged_file")"
+            if (( size > 50000000 )); then
+              echo "::error::Staged file exceeds 50 MB safety limit: $staged_file ($size bytes)"
+              exit 1
+            fi
+          done < <(git diff --cached --name-only --diff-filter=ACMR)
 
           if git diff --cached --quiet; then
-            echo "::error::AI herhangi bir dosya değişikliği üretmedi."
+            echo "::error::AI herhangi bir kalıcı dosya değişikliği üretmedi."
             exit 1
           fi
+
+          echo "Files selected for AI task pull request:"
+          git diff --cached --name-status
 
           git commit -m "feat(ai): execute task $TARGET"
           git push --set-upstream origin "$AI_BRANCH"
@@ -395,7 +419,7 @@ jobs:
             --base "${{ github.event.repository.default_branch }}" \
             --head "$AI_BRANCH" \
             --title "[AI Task] $TARGET" \
-            --body "Yerel GitHub-hosted açık model tarafından üretilen görev çıktısı. Test raporları reports/ klasöründedir. Manuel inceleme gereklidir."
+            --body "Yerel GitHub-hosted açık model tarafından üretilen görev çıktısı. Test raporları reports/ klasöründedir. Runtime, model ve cache dosyaları commit dışında bırakılmıştır. Manuel inceleme gereklidir."
 
       - name: Review pull request
         if: env.OPERATION == 'review-pr'
