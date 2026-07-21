@@ -228,6 +228,13 @@ def execute(root: Path, reference: str, agent: str) -> dict[str, Any]:
     llm = client(root)
     model = model_config(root)
 
+    # Capture existing repository health before the AI changes anything.
+    baseline_checks = run_checks(root)
+    baseline_failures = {
+        item["command"] for item in baseline_checks
+        if item["returncode"] != 0
+    }
+
     payload, raw_output = strict_payload(
         llm=llm,
         agent_prompt=read_agent(root, agent),
@@ -265,14 +272,29 @@ def execute(root: Path, reference: str, agent: str) -> dict[str, Any]:
     )
 
     checks = run_checks(root)
-    passed = all(item["returncode"] == 0 for item in checks)
+    new_failures = [
+        item for item in checks
+        if item["returncode"] != 0
+        and item["command"] not in baseline_failures
+    ]
+    passed = not new_failures
+
+    for item in checks:
+        status = "PASS" if item["returncode"] == 0 else "FAIL"
+        print(f"[{status}] {item['command']}")
+        if item["stdout"]:
+            print(item["stdout"])
+        if item["stderr"]:
+            print(item["stderr"])
 
     report = {
         "reference": reference,
         "agent": agent,
         "summary": payload.get("summary", ""),
         "changed_files": changed,
+        "baseline_checks": baseline_checks,
         "checks": checks,
+        "new_failures": new_failures,
         "passed": passed,
         "notes": payload.get("notes", []),
     }
@@ -314,7 +336,13 @@ def execute(root: Path, reference: str, agent: str) -> dict[str, Any]:
     )
 
     if not passed:
-        raise RuntimeError("Generated changes failed repository checks")
+        failed_commands = ", ".join(
+            item["command"] for item in new_failures
+        )
+        raise RuntimeError(
+            "Generated changes introduced new repository check failures: "
+            + failed_commands
+        )
 
     return report
 
