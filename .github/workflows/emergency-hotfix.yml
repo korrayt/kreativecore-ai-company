@@ -1,0 +1,275 @@
+name: Emergency Company Hotfix
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: Type REPAIR to restore project state and lock department agents
+        required: true
+        default: REPAIR
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: emergency-company-hotfix
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    if: ${{ inputs.confirm == 'REPAIR' }}
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BASE_BRANCH: ${{ github.event.repository.default_branch }}
+      HOTFIX_BRANCH: hotfix/safe-department-agents-${{ github.run_id }}
+      SAFE_STATE_COMMIT: 86ee2fe094d627428552d5c626a006d085da326e
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$HOTFIX_BRANCH"
+
+      - name: Restore valid project state files
+        run: |
+          git checkout "$SAFE_STATE_COMMIT" -- \
+            tasks/projects/ilk-projem/.company/AI_ANALYSIS.json \
+            tasks/projects/ilk-projem/.company/PROJECT_STATE.json
+
+      - name: Lock department agents to their own report file
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import ast
+
+          path = Path("engine/execute_task.py")
+          text = path.read_text(encoding="utf-8")
+
+          guard = """
+
+          def validate_agent_scope(
+              agent: str,
+              request: str,
+              actions: list[dict[str, Any]],
+          ) -> None:
+              # Prevent department agents from writing outside their own report file.
+              if not agent.startswith("dept-"):
+                  return
+
+              project_path = project_path_from_request(request)
+              if not project_path:
+                  raise ProtocolError(
+                      "Could not determine the project path for department scope validation"
+                  )
+
+              allowed_path = document_target(agent, project_path)
+              if not allowed_path:
+                  raise ProtocolError(
+                      f"No safe department document target exists for agent: {agent}"
+                  )
+
+              for action in actions:
+                  if (
+                      action.get("op") != "write"
+                      or action.get("path") != allowed_path
+                  ):
+                      raise ProtocolError(
+                          f"Department agent {agent} may write only to {allowed_path}"
+                      )
+          """
+
+          if "def validate_agent_scope(" not in text:
+              marker = "\n\ndef resolve(root: Path, reference: str) -> tuple[str, str]:\n"
+
+              if marker not in text:
+                  raise RuntimeError(
+                      "Could not find resolve() insertion point"
+                  )
+
+              text = text.replace(
+                  marker,
+                  guard + marker,
+                  1,
+              )
+
+          old = """    payload, raw_output = strict_payload(
+              llm=llm,
+              agent_prompt=read_agent(root, agent),
+              title=title,
+              request=request,
+              context=context,
+              max_tokens=model.max_tokens_code,
+          )
+
+          if payload is None:
+              if document_target(agent, project_path_from_request(request) or "") is None:
+                  raise ProtocolError(
+                      "The local model returned invalid JSON twice. "
+                      f"Automatic document fallback is not allowed for agent: {agent}"
+                  )
+              payload = document_fallback(
+                  llm=llm,
+                  agent=agent,
+                  agent_prompt=read_agent(root, agent),
+                  title=title,
+                  request=request,
+                  context=context,
+                  raw_output=raw_output,
+              )
+
+          actions = validate_code_actions(payload)
+          """
+
+          new = """    if agent.startswith("dept-"):
+              payload = document_fallback(
+                  llm=llm,
+                  agent=agent,
+                  agent_prompt=read_agent(root, agent),
+                  title=title,
+                  request=request,
+                  context=context,
+                  raw_output=(
+                      "Department agents are restricted "
+                      "to document-only mode."
+                  ),
+              )
+          else:
+              payload, raw_output = strict_payload(
+                  llm=llm,
+                  agent_prompt=read_agent(root, agent),
+                  title=title,
+                  request=request,
+                  context=context,
+                  max_tokens=model.max_tokens_code,
+              )
+
+              if payload is None:
+                  if (
+                      document_target(
+                          agent,
+                          project_path_from_request(request) or "",
+                      )
+                      is None
+                  ):
+                      raise ProtocolError(
+                          "The local model returned invalid JSON twice. "
+                          "Automatic document fallback is not allowed "
+                          f"for agent: {agent}"
+                      )
+
+                  payload = document_fallback(
+                      llm=llm,
+                      agent=agent,
+                      agent_prompt=read_agent(root, agent),
+                      title=title,
+                      request=request,
+                      context=context,
+                      raw_output=raw_output,
+                  )
+
+          actions = validate_code_actions(payload)
+          validate_agent_scope(agent, request, actions)
+          """
+
+          if new not in text:
+              if old not in text:
+                  raise RuntimeError(
+                      "Could not find the execute-task payload block to replace"
+                  )
+
+              text = text.replace(
+                  old,
+                  new,
+                  1,
+              )
+
+          ast.parse(text)
+
+          path.write_text(
+              text,
+              encoding="utf-8",
+              newline="\n",
+          )
+          PY
+
+      - name: Remove this one-time workflow from the hotfix
+        run: |
+          git rm --ignore-unmatch .github/workflows/emergency-hotfix.yml
+
+      - name: Validate repaired repository
+        run: |
+          python -m py_compile engine/execute_task.py
+          python engine/validate_repo.py .
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for filename in (
+              "tasks/projects/ilk-projem/.company/AI_ANALYSIS.json",
+              "tasks/projects/ilk-projem/.company/PROJECT_STATE.json",
+          ):
+              with Path(filename).open(
+                  encoding="utf-8"
+              ) as stream:
+                  json.load(stream)
+
+              print(f"Valid JSON: {filename}")
+          PY
+
+      - name: Commit and push hotfix
+        run: |
+          git add --all
+
+          git commit \
+            -m "fix: restore project state and isolate department agents"
+
+          git push \
+            --set-upstream origin \
+            "$HOTFIX_BRANCH"
+
+      - name: Open hotfix pull request
+        id: pr
+        shell: bash
+        run: |
+          PR_URL="$(gh pr create \
+            --base "$BASE_BRANCH" \
+            --head "$HOTFIX_BRANCH" \
+            --title "[HOTFIX] Restore project state and isolate department agents" \
+            --body "Restores the two project-state JSON files damaged by AI Task #4. Department agents are moved into document-only mode and may write only to their own .company/departments report file. This one-time repair workflow deletes itself when the PR is merged.")"
+
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+          echo "### Hotfix PR" >> "$GITHUB_STEP_SUMMARY"
+          echo "$PR_URL" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Pause Issue 4 until hotfix merge
+        shell: bash
+        run: |
+          gh issue edit 4 \
+            --remove-label "local-ai:auto" \
+            || true
+
+          gh issue edit 4 \
+            --remove-label "status:review" \
+            || true
+
+          gh issue edit 4 \
+            --add-label "status:blocked" \
+            || true
+
+          gh issue comment 4 \
+            --body "Acil onarım PR'ı hazır: ${{ steps.pr.outputs.url }}. Bu PR merge edilmeden otomatik yürütme yeniden açılmamalı."
