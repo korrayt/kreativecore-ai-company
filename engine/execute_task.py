@@ -26,6 +26,20 @@ DOCUMENT_AGENTS = {
 }
 
 
+def document_target(agent: str, project_path: str) -> str | None:
+    """Return a safe project document path for core or department agents."""
+    if agent in DOCUMENT_AGENTS:
+        return f"{project_path}/.company/{DOCUMENT_AGENTS[agent]}"
+
+    if agent.startswith("dept-"):
+        slug = re.sub(r"[^A-Za-z0-9._-]+", "-", agent).strip("-")
+        if not slug:
+            return None
+        return f"{project_path}/.company/departments/{slug}.md"
+
+    return None
+
+
 def resolve(root: Path, reference: str) -> tuple[str, str]:
     if reference.isdigit():
         issue = GitHub().issue(int(reference))
@@ -160,8 +174,11 @@ def document_fallback(
             "Could not determine the project path for document fallback"
         )
 
-    filename = DOCUMENT_AGENTS[agent]
-    target = f"{project_path}/.company/{filename}"
+    target = document_target(agent, project_path)
+    if not target:
+        raise ProtocolError(
+            f"Automatic document fallback is not allowed for agent: {agent}"
+        )
 
     markdown = llm.chat(
         system=(
@@ -171,6 +188,14 @@ def document_fallback(
             + "\nKeep it concise, concrete and reviewable."
         ),
         user=f"""Create the requested project document.
+
+For department agents, focus only on that department's perspective and include:
+- objective
+- required inputs
+- dependencies
+- acceptance criteria
+- risks
+- smallest next executable task
 
 TASK TITLE:
 {title}
@@ -245,10 +270,10 @@ def execute(root: Path, reference: str, agent: str) -> dict[str, Any]:
     )
 
     if payload is None:
-        if agent not in DOCUMENT_AGENTS:
+        if document_target(agent, project_path_from_request(request) or "") is None:
             raise ProtocolError(
                 "The local model returned invalid JSON twice. "
-                "Automatic document fallback is not allowed for this agent."
+                f"Automatic document fallback is not allowed for agent: {agent}"
             )
         payload = document_fallback(
             llm=llm,
