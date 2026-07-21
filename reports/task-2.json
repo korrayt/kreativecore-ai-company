@@ -1,0 +1,43 @@
+{
+  "reference": "2",
+  "agent": "planner",
+  "summary": "planner output was converted to a project document after the model failed the JSON action protocol.",
+  "changed_files": [
+    "tasks/projects/ilk-projem/.company/ROADMAP.md"
+  ],
+  "baseline_checks": [
+    {
+      "command": "python engine/validate_repo.py .",
+      "returncode": 0,
+      "stdout": "Repository validation passed.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -m pytest -q",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "/opt/hostedtoolcache/Python/3.12.13/x64/bin/python: No module named pytest\n"
+    }
+  ],
+  "checks": [
+    {
+      "command": "python engine/validate_repo.py .",
+      "returncode": 0,
+      "stdout": "Repository validation passed.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -m pytest -q",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "/opt/hostedtoolcache/Python/3.12.13/x64/bin/python: No module named pytest\n"
+    }
+  ],
+  "new_failures": [],
+  "passed": true,
+  "notes": [
+    "JSON action protocol required fallback to Markdown document mode.",
+    "Human review is required before merge.",
+    "Original malformed output length: 6038 characters."
+  ]
+}
