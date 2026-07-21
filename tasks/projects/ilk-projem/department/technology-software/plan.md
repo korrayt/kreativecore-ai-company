@@ -1,0 +1,1 @@
+Review the project from the technology-software department's perspective and produce the department-specific plan, required inputs, dependencies, acceptance criteria, risks, and the smallest next executable task.
