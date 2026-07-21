@@ -44,7 +44,7 @@ on:
 
   schedule:
     - cron: "0 5 * * *"
-    - cron: "17 */6 * * *"
+    - cron: "26 * * * *"
 
 permissions:
   contents: write
