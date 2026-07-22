@@ -3,7 +3,7 @@
     {
       "work_id": "project:ilk-projem:analysis",
       "title": "[ANALYSIS] OC — Yerel-First Kişisel AI Çalışma Alanı",
-      "body": "<!-- kc-work-id:project:ilk-projem:analysis -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Mission\n\nRead the entire project folder and generated `.company` files. Replace the deterministic first\npass with a deeper analysis. Clarify the problem, desired outcome, missing information, risks,\nopportunities, required departments and the next decision.\n\nUpdate project documentation in the same folder and open a focused pull request.\n\n## Local AI execution\n\n- Custom agent: `analyst`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `false`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `analyst`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:analysis -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Mission\n\nRead the entire project folder and generated `.company` files. Replace the deterministic first\npass with a deeper analysis. Clarify the problem, desired outcome, missing information, risks,\nopportunities, required departments and the next decision.\n\nUpdate project documentation in the same folder and open a focused pull request.\n\n## Local AI execution\n\n- Custom agent: `analyst`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `false`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `analyst`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:analyst",
@@ -18,12 +18,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": false,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:roadmap",
       "title": "[PLAN] OC — Yerel-First Kişisel AI Çalışma Alanı — roadmap and work breakdown",
-      "body": "<!-- kc-work-id:project:ilk-projem:roadmap -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Mission\n\nUse the project brief and analysis to create a realistic milestone roadmap, dependencies,\nacceptance criteria, risks, work packages and review gates. Keep the plan small enough to\nexecute and update `.company/ROADMAP.md`.\n\n## Local AI execution\n\n- Custom agent: `planner`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `false`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `planner`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:roadmap -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Mission\n\nUse the project brief and analysis to create a realistic milestone roadmap, dependencies,\nacceptance criteria, risks, work packages and review gates. Keep the plan small enough to\nexecute and update `.company/ROADMAP.md`.\n\n## Local AI execution\n\n- Custom agent: `planner`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `false`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `planner`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:planner",
@@ -38,12 +38,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": false,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:technology-software",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Yazılım ve Teknoloji",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:technology-software -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Yazılım ve Teknoloji**\n\nRouting score: 68  \nRouting reasons: api, architecture, desktop, github, masaüstü, mimari, mobil, platform, react, rust, tauri, type:ai, typescript\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-03-technology-software`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-03-technology-software`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:technology-software -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Yazılım ve Teknoloji**\n\nRouting score: 72  \nRouting reasons: api, architecture, desktop, github, masaüstü, mimari, mobil, platform, react, rust, software, tauri, type:ai, typescript\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-03-technology-software`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-03-technology-software`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-03-technology-software",
@@ -57,12 +57,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:product-planning",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Ürün ve Planlama",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:product-planning -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Ürün ve Planlama**\n\nRouting score: 52  \nRouting reasons: company-core, fiyatlandırma, kullanıcı, product, prototip, type:ai, ui, ürün\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-02-product-planning`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-02-product-planning`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:product-planning -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Ürün ve Planlama**\n\nRouting score: 54  \nRouting reasons: company-core, fiyatlandırma, kullanıcı, product, prototip, type:ai, ui, ürün\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-02-product-planning`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-02-product-planning`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-02-product-planning",
@@ -76,12 +76,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:ai-data-analytics",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Yapay Zekâ, Veri ve Analitik",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:ai-data-analytics -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Yapay Zekâ, Veri ve Analitik**\n\nRouting score: 50  \nRouting reasons: ai, data, model, type:ai, veri, yapay zekâ\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-04-ai-data-analytics`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-04-ai-data-analytics`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:ai-data-analytics -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Yapay Zekâ, Veri ve Analitik**\n\nRouting score: 50  \nRouting reasons: ai, data, model, type:ai, veri, yapay zekâ\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-04-ai-data-analytics`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-04-ai-data-analytics`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-04-ai-data-analytics",
@@ -95,12 +95,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:quality-testing",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Kalite ve Test",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:quality-testing -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Kalite ve Test**\n\nRouting score: 44  \nRouting reasons: bug, hata, release, sürüm, test, type:ai\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-07-quality-testing`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-07-quality-testing`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:quality-testing -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Kalite ve Test**\n\nRouting score: 44  \nRouting reasons: bug, hata, release, sürüm, test, type:ai\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-07-quality-testing`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-07-quality-testing`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-07-quality-testing",
@@ -114,12 +114,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:legal-compliance",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Hukuk ve Uyum",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:legal-compliance -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Hukuk ve Uyum**\n\nRouting score: 38  \nRouting reasons: etik, ip, izin, lisans, uyum\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-15-legal-compliance`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-15-legal-compliance`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:legal-compliance -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Hukuk ve Uyum**\n\nRouting score: 38  \nRouting reasons: etik, ip, izin, lisans, uyum\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-15-legal-compliance`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-15-legal-compliance`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-15-legal-compliance",
@@ -133,12 +133,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:people-culture",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — İnsan ve Kültür",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:people-culture -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**İnsan ve Kültür**\n\nRouting score: 22  \nRouting reasons: hr, ik, çalışan\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-14-people-culture`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-14-people-culture`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:people-culture -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**İnsan ve Kültür**\n\nRouting score: 22  \nRouting reasons: hr, ik, çalışan\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-14-people-culture`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-14-people-culture`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-14-people-culture",
@@ -152,12 +152,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:customer-experience",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Müşteri Departmanları",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:customer-experience -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Müşteri Departmanları**\n\nRouting score: 20  \nRouting reasons: başarı, destek, müşteri, success\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-11-customer-experience`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-11-customer-experience`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:customer-experience -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Müşteri Departmanları**\n\nRouting score: 20  \nRouting reasons: başarı, destek, müşteri, success\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-11-customer-experience`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-11-customer-experience`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-11-customer-experience",
@@ -171,12 +171,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:operations",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Operasyon",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:operations -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Operasyon**\n\nRouting score: 20  \nRouting reasons: production, type:ai, üretim\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-12-operations`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-12-operations`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:operations -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Operasyon**\n\nRouting score: 20  \nRouting reasons: production, type:ai, üretim\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-12-operations`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-12-operations`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-12-operations",
@@ -190,12 +190,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:security-trust",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Siber Güvenlik ve Güven",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:security-trust -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Siber Güvenlik ve Güven**\n\nRouting score: 18  \nRouting reasons: güvenlik, risk, type:ai\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-08-security-trust`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-08-security-trust`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:security-trust -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Siber Güvenlik ve Güven**\n\nRouting score: 20  \nRouting reasons: güvenlik, risk, type:ai\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-08-security-trust`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-08-security-trust`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-08-security-trust",
@@ -209,12 +209,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:design-creative",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Tasarım ve Kreatif",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:design-creative -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Tasarım ve Kreatif**\n\nRouting score: 12  \nRouting reasons: metin, müzik, ses, video\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-06-design-creative`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-06-design-creative`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:design-creative -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Tasarım ve Kreatif**\n\nRouting score: 12  \nRouting reasons: metin, müzik, ses, video\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-06-design-creative`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-06-design-creative`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-06-design-creative",
@@ -228,12 +228,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:marketing",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Pazarlama",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:marketing -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Pazarlama**\n\nRouting score: 12  \nRouting reasons: pr, sosyal medya\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-09-marketing`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-09-marketing`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:marketing -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Pazarlama**\n\nRouting score: 12  \nRouting reasons: pr, sosyal medya\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-09-marketing`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-09-marketing`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-09-marketing",
@@ -247,12 +247,12 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     },
     {
       "work_id": "project:ilk-projem:department:rnd-innovation",
       "title": "[DEPT] OC — Yerel-First Kişisel AI Çalışma Alanı — Ar-Ge ve İnovasyon",
-      "body": "<!-- kc-work-id:project:ilk-projem:department:rnd-innovation -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Ar-Ge ve İnovasyon**\n\nRouting score: 12  \nRouting reasons: arge, type:ai\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-05-rnd-innovation`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-05-rnd-innovation`.\n\n## Source fingerprint\n\n`174848a361d730ce`\n",
+      "body": "<!-- kc-work-id:project:ilk-projem:department:rnd-innovation -->\n\n## Project\n\n`tasks/projects/ilk-projem`\n\n## Department\n\n**Ar-Ge ve İnovasyon**\n\nRouting score: 12  \nRouting reasons: arge, type:ai\n\n## Mission\n\nReview the project from this department's perspective. Produce the department-specific plan,\nrequired inputs, dependencies, acceptance criteria, risks and the smallest next executable\ntask. Do not implement unrelated departments' work.\n\n## Local AI execution\n\n- Custom agent: `dept-05-rnd-innovation`\n- Priority: `P1`\n- Auto execute requested: `false`\n- Owner approval required: `true`\n- Mode: Founder approval required before local AI execution.\n\nMobile action: use **Actions → Mobile Company Control** and select agent `dept-05-rnd-innovation`.\n\n## Source fingerprint\n\n`57e770378b058367`\n",
       "labels": [
         "P1",
         "agent:dept-05-rnd-innovation",
@@ -266,7 +266,7 @@
       "priority": "P1",
       "auto_execute": false,
       "owner_approval": true,
-      "source_hash": "174848a361d730ce"
+      "source_hash": "57e770378b058367"
     }
   ]
 }

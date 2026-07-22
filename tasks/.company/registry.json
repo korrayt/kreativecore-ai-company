@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-07-21T07:35:28.278836+00:00",
+  "updated_at": "2026-07-22T07:37:34.952302+00:00",
   "projects": [
     {
       "kind": "project",
@@ -17,18 +17,19 @@
       "owner_approval": true,
       "manifest_present": true,
       "manifest_parse_error": null,
-      "source_hash": "174848a361d730ce",
-      "file_count": 2,
+      "source_hash": "57e770378b058367",
+      "file_count": 3,
       "files": [
         "BRIEF.md",
-        "PROJECT.toml"
+        "PROJECT.toml",
+        "department/technology-software/plan.md"
       ],
       "departments": [
         {
           "id": "technology-software",
           "name": "Yazılım ve Teknoloji",
           "agent": "dept-03-technology-software",
-          "score": 68,
+          "score": 72,
           "reasons": [
             "api",
             "architecture",
@@ -40,6 +41,7 @@
             "platform",
             "react",
             "rust",
+            "software",
             "tauri",
             "type:ai",
             "typescript"
@@ -49,7 +51,7 @@
           "id": "product-planning",
           "name": "Ürün ve Planlama",
           "agent": "dept-02-product-planning",
-          "score": 52,
+          "score": 54,
           "reasons": [
             "company-core",
             "fiyatlandırma",
@@ -140,7 +142,7 @@
           "id": "security-trust",
           "name": "Siber Güvenlik ve Güven",
           "agent": "dept-08-security-trust",
-          "score": 18,
+          "score": 20,
           "reasons": [
             "güvenlik",
             "risk",
@@ -180,7 +182,7 @@
           ]
         }
       ],
-      "updated_at": "2026-07-21T07:35:28.277628+00:00"
+      "updated_at": "2026-07-22T07:37:34.951257+00:00"
     }
   ],
   "tasks": [],
