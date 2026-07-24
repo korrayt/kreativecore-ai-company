@@ -1,0 +1,28 @@
+[project]
+name = "CutMate — AI Premiere Pro Editing Assistant"
+objective = "Premiere Pro kurgucuları için kontrolden çıkmayan, güvenli, sekan ve marker önerileri sunan bağlam duyarlı yapay zekâ kurgu asistanı geliştirmek."
+desired_outcome = "Adobe Premiere Pro UXP eklentisi ve yerel bridge bağlantısıyla çalışan; sekan kurgulama, marker koyma ve izin kontrollü işlem yapabilen masaüstü ve eklenti paketi."
+type = "ai"
+priority = "P1"
+stage = "validating"
+owner = "@korrayt"
+departments = ["auto"]
+auto_analyze = false
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Adobe Premiere Pro kurgucuları, video içerik üreticileri ve bağımsız editörler."
+problem = "Mevcut AI araçları kurgu ortamının dışında kalıyor ya da proje dosyalarına denetimsiz müdahale ederek kurgucunun kontrolünü bozuyor."
+constraints = "Kullanıcı onayı olmadan sekan değiştirilmeyecek, klip silinmeyecek. Premiere UXP platformuyla tam uyumlu çalışacak."
+success_signal = "Editör Premiere içinde CutMate panelini açabilir, sekan özeti alabilir, izinli marker ekletebilir."
+
+[product]
+product_name = "CutMate"
+positioning = "Premiere Pro içinde yaşayan, kontrolden çıkmayan akıllı kurgu ortağı."
+core_value = "Bağlam duyarlılık, güvenlik, hız ve tam kontrol."
+first_platform = "Premiere Pro UXP (Windows/Mac)"
+distribution = "Installer / ZXP Package"
+
+[technical]
+preferred_stack = ["Premiere UXP", "TypeScript", "React", "Tauri", "Local LLM Bridge"]

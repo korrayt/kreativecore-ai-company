@@ -1,0 +1,28 @@
+[project]
+name = "Vision — Semantik Çekim ve Görsel Arama Engine"
+objective = "Büyük video projelerinde ve arşivlerde kullanıcıların aradığı kareyi ve çekimi doğal dille bulmasını sağlayan yerel görsel arama motoru geliştirmek."
+desired_outcome = "Video karelerini indeksleyen, nesne ve sahne sorgularını arayan yerel masaüstü modülü."
+type = "ai"
+priority = "P1"
+stage = "validating"
+owner = "@korrayt"
+departments = ["auto"]
+auto_analyze = false
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Video editörleri, arşiv yöneticileri, yönetmenler ve içerik üreticileri."
+problem = "Saatlerce süren Ham çekimler (footage) arasında aranan belirli bir sahneyi veya objeyi bulmak çok uzun zaman almaktadır."
+constraints = "Tüm arama ve görüntü işleme yerelde çalışmalıdır."
+success_signal = "Kullanıcı 'mavi ceketli adam' yazdığında ilgili video zaman damgasını anında bulabilir."
+
+[product]
+product_name = "Vision"
+positioning = "Video arşivinizin doğal dille aranan akıllı hafızası."
+core_value = "Hızlı indeksleme, gizlilik ve nokta atışı görsel arama."
+first_platform = "Windows Desktop"
+distribution = "Executable Package"
+
+[technical]
+preferred_stack = ["Python", "OpenCV", "CLIP / Local Vision Embeddings", "SQLite Vector"]
