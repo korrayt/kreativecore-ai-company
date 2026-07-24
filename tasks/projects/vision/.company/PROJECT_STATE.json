@@ -1,0 +1,152 @@
+{
+  "kind": "project",
+  "slug": "vision",
+  "name": "Vision — Semantik Çekim ve Görsel Arama Engine",
+  "path": "tasks/projects/vision",
+  "objective": "Büyük video projelerinde ve arşivlerde kullanıcıların aradığı kareyi ve çekimi doğal dille bulmasını sağlayan yerel görsel arama motoru geliştirmek.",
+  "desired_outcome": "Video karelerini indeksleyen, nesne ve sahne sorgularını arayan yerel masaüstü modülü.",
+  "type": "ai",
+  "priority": "P1",
+  "stage": "validating",
+  "owner": "@korrayt",
+  "auto_execute": false,
+  "owner_approval": true,
+  "manifest_present": true,
+  "manifest_parse_error": null,
+  "source_hash": "de9003c345b53231",
+  "file_count": 2,
+  "files": [
+    "BRIEF.md",
+    "PROJECT.toml"
+  ],
+  "departments": [
+    {
+      "id": "ai-data-analytics",
+      "name": "Yapay Zekâ, Veri ve Analitik",
+      "agent": "dept-04-ai-data-analytics",
+      "score": 22,
+      "reasons": [
+        "ai",
+        "embedding",
+        "type:ai",
+        "vector",
+        "yapay zekâ"
+      ]
+    },
+    {
+      "id": "product-planning",
+      "name": "Ürün ve Planlama",
+      "agent": "dept-02-product-planning",
+      "score": 22,
+      "reasons": [
+        "company-core",
+        "kullanıcı",
+        "product",
+        "type:ai",
+        "ui"
+      ]
+    },
+    {
+      "id": "design-creative",
+      "name": "Tasarım ve Kreatif",
+      "agent": "dept-06-design-creative",
+      "score": 20,
+      "reasons": [
+        "görsel",
+        "video"
+      ]
+    },
+    {
+      "id": "technology-software",
+      "name": "Yazılım ve Teknoloji",
+      "agent": "dept-03-technology-software",
+      "score": 18,
+      "reasons": [
+        "desktop",
+        "masaüstü",
+        "platform",
+        "python",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "rnd-innovation",
+      "name": "Ar-Ge ve İnovasyon",
+      "agent": "dept-05-rnd-innovation",
+      "score": 12,
+      "reasons": [
+        "arge",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "marketing",
+      "name": "Pazarlama",
+      "agent": "dept-09-marketing",
+      "score": 10,
+      "reasons": [
+        "pr"
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "Operasyon",
+      "agent": "dept-12-operations",
+      "score": 10,
+      "reasons": [
+        "type:ai",
+        "üretim"
+      ]
+    },
+    {
+      "id": "people-culture",
+      "name": "İnsan ve Kültür",
+      "agent": "dept-14-people-culture",
+      "score": 10,
+      "reasons": [
+        "ik"
+      ]
+    },
+    {
+      "id": "security-trust",
+      "name": "Siber Güvenlik ve Güven",
+      "agent": "dept-08-security-trust",
+      "score": 10,
+      "reasons": [
+        "gizlilik",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "management-strategy",
+      "name": "Yönetim ve Strateji",
+      "agent": "dept-01-management-strategy",
+      "score": 9,
+      "reasons": [
+        "company-core",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "quality-testing",
+      "name": "Kalite ve Test",
+      "agent": "dept-07-quality-testing",
+      "score": 8,
+      "reasons": [
+        "type:ai"
+      ]
+    },
+    {
+      "id": "legal-compliance",
+      "name": "Hukuk ve Uyum",
+      "agent": "dept-15-legal-compliance",
+      "score": 6,
+      "reasons": [
+        "etik",
+        "ip",
+        "izin"
+      ]
+    }
+  ],
+  "updated_at": "2026-07-24T11:20:43.681997+00:00"
+}

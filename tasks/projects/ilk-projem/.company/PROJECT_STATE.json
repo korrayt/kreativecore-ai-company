@@ -13,12 +13,12 @@
   "owner_approval": true,
   "manifest_present": true,
   "manifest_parse_error": null,
-  "source_hash": "57e770378b058367",
+  "source_hash": "60800e1fd5a021e7",
   "file_count": 3,
   "files": [
     "BRIEF.md",
-    "PROJECT.toml",
-    "department/technology-software/plan.md"
+    "department/technology-software/plan.md",
+    "PROJECT.toml"
   ],
   "departments": [
     {
@@ -178,5 +178,5 @@
       ]
     }
   ],
-  "updated_at": "2026-07-24T07:35:43.869161+00:00"
+  "updated_at": "2026-07-24T11:20:43.664992+00:00"
 }

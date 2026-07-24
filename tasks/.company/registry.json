@@ -1,7 +1,164 @@
 {
   "version": 2,
-  "updated_at": "2026-07-24T07:35:43.870172+00:00",
+  "updated_at": "2026-07-24T11:20:43.686636+00:00",
   "projects": [
+    {
+      "kind": "project",
+      "slug": "cutmate",
+      "name": "CutMate — AI Premiere Pro Editing Assistant",
+      "path": "tasks/projects/cutmate",
+      "objective": "Premiere Pro kurgucuları için kontrolden çıkmayan, güvenli, sekan ve marker önerileri sunan bağlam duyarlı yapay zekâ kurgu asistanı geliştirmek.",
+      "desired_outcome": "Adobe Premiere Pro UXP eklentisi ve yerel bridge bağlantısıyla çalışan; sekan kurgulama, marker koyma ve izin kontrollü işlem yapabilen masaüstü ve eklenti paketi.",
+      "type": "ai",
+      "priority": "P1",
+      "stage": "validating",
+      "owner": "@korrayt",
+      "auto_execute": false,
+      "owner_approval": true,
+      "manifest_present": true,
+      "manifest_parse_error": null,
+      "source_hash": "dcf794560a7a9254",
+      "file_count": 2,
+      "files": [
+        "BRIEF.md",
+        "PROJECT.toml"
+      ],
+      "departments": [
+        {
+          "id": "ai-data-analytics",
+          "name": "Yapay Zekâ, Veri ve Analitik",
+          "agent": "dept-04-ai-data-analytics",
+          "score": 30,
+          "reasons": [
+            "ai",
+            "llm",
+            "model",
+            "type:ai",
+            "veri",
+            "yapay zekâ"
+          ]
+        },
+        {
+          "id": "product-planning",
+          "name": "Ürün ve Planlama",
+          "agent": "dept-02-product-planning",
+          "score": 28,
+          "reasons": [
+            "company-core",
+            "kullanıcı",
+            "product",
+            "type:ai",
+            "ui",
+            "ux"
+          ]
+        },
+        {
+          "id": "technology-software",
+          "name": "Yazılım ve Teknoloji",
+          "agent": "dept-03-technology-software",
+          "score": 28,
+          "reasons": [
+            "api",
+            "entegrasyon",
+            "masaüstü",
+            "platform",
+            "react",
+            "tauri",
+            "type:ai",
+            "typescript"
+          ]
+        },
+        {
+          "id": "legal-compliance",
+          "name": "Hukuk ve Uyum",
+          "agent": "dept-15-legal-compliance",
+          "score": 20,
+          "reasons": [
+            "ip",
+            "izin",
+            "uyum"
+          ]
+        },
+        {
+          "id": "design-creative",
+          "name": "Tasarım ve Kreatif",
+          "agent": "dept-06-design-creative",
+          "score": 14,
+          "reasons": [
+            "kurgu",
+            "video"
+          ]
+        },
+        {
+          "id": "people-culture",
+          "name": "İnsan ve Kültür",
+          "agent": "dept-14-people-culture",
+          "score": 14,
+          "reasons": [
+            "ik",
+            "çalışan"
+          ]
+        },
+        {
+          "id": "rnd-innovation",
+          "name": "Ar-Ge ve İnovasyon",
+          "agent": "dept-05-rnd-innovation",
+          "score": 12,
+          "reasons": [
+            "arge",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "marketing",
+          "name": "Pazarlama",
+          "agent": "dept-09-marketing",
+          "score": 10,
+          "reasons": [
+            "pr"
+          ]
+        },
+        {
+          "id": "security-trust",
+          "name": "Siber Güvenlik ve Güven",
+          "agent": "dept-08-security-trust",
+          "score": 10,
+          "reasons": [
+            "güvenlik",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "management-strategy",
+          "name": "Yönetim ve Strateji",
+          "agent": "dept-01-management-strategy",
+          "score": 9,
+          "reasons": [
+            "company-core",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "operations",
+          "name": "Operasyon",
+          "agent": "dept-12-operations",
+          "score": 8,
+          "reasons": [
+            "type:ai"
+          ]
+        },
+        {
+          "id": "quality-testing",
+          "name": "Kalite ve Test",
+          "agent": "dept-07-quality-testing",
+          "score": 8,
+          "reasons": [
+            "type:ai"
+          ]
+        }
+      ],
+      "updated_at": "2026-07-24T11:20:43.654749+00:00"
+    },
     {
       "kind": "project",
       "slug": "ilk-projem",
@@ -17,12 +174,12 @@
       "owner_approval": true,
       "manifest_present": true,
       "manifest_parse_error": null,
-      "source_hash": "57e770378b058367",
+      "source_hash": "60800e1fd5a021e7",
       "file_count": 3,
       "files": [
         "BRIEF.md",
-        "PROJECT.toml",
-        "department/technology-software/plan.md"
+        "department/technology-software/plan.md",
+        "PROJECT.toml"
       ],
       "departments": [
         {
@@ -182,9 +339,461 @@
           ]
         }
       ],
-      "updated_at": "2026-07-24T07:35:43.869161+00:00"
+      "updated_at": "2026-07-24T11:20:43.664992+00:00"
+    },
+    {
+      "kind": "project",
+      "slug": "kreativecore-store",
+      "name": "Kreative Core Store — www.kreativecore.store Public Vitrin ve Dağıtım Kanalı",
+      "path": "tasks/projects/kreativecore-store",
+      "objective": "Kreative Core'un otonom şirket altyapısını, ürünlerini ve $0.00 maliyetli in-house ajan mimarisini kamuoyuna ve kullanıcılara sunan web platformunu canlıya almak.",
+      "desired_outcome": "kreativecore.store üzerinde yayınlanan şık, modern, responsive ve ürün indirme imkânı sunan web sitesi.",
+      "type": "web",
+      "priority": "P1",
+      "stage": "active",
+      "owner": "@korrayt",
+      "auto_execute": false,
+      "owner_approval": true,
+      "manifest_present": true,
+      "manifest_parse_error": null,
+      "source_hash": "fa7502d975c51956",
+      "file_count": 2,
+      "files": [
+        "BRIEF.md",
+        "PROJECT.toml"
+      ],
+      "departments": [
+        {
+          "id": "product-planning",
+          "name": "Ürün ve Planlama",
+          "agent": "dept-02-product-planning",
+          "score": 32,
+          "reasons": [
+            "company-core",
+            "kullanıcı",
+            "product",
+            "type:web",
+            "ui",
+            "ürün"
+          ]
+        },
+        {
+          "id": "technology-software",
+          "name": "Yazılım ve Teknoloji",
+          "agent": "dept-03-technology-software",
+          "score": 26,
+          "reasons": [
+            "github",
+            "javascript",
+            "mimari",
+            "mobil",
+            "platform",
+            "yazılım"
+          ]
+        },
+        {
+          "id": "ai-data-analytics",
+          "name": "Yapay Zekâ, Veri ve Analitik",
+          "agent": "dept-04-ai-data-analytics",
+          "score": 14,
+          "reasons": [
+            "ai",
+            "yapay zekâ"
+          ]
+        },
+        {
+          "id": "legal-compliance",
+          "name": "Hukuk ve Uyum",
+          "agent": "dept-15-legal-compliance",
+          "score": 14,
+          "reasons": [
+            "etik",
+            "ip",
+            "lisans",
+            "uyum"
+          ]
+        },
+        {
+          "id": "people-culture",
+          "name": "İnsan ve Kültür",
+          "agent": "dept-14-people-culture",
+          "score": 14,
+          "reasons": [
+            "ik",
+            "performans"
+          ]
+        },
+        {
+          "id": "marketing",
+          "name": "Pazarlama",
+          "agent": "dept-09-marketing",
+          "score": 10,
+          "reasons": [
+            "pr"
+          ]
+        },
+        {
+          "id": "management-strategy",
+          "name": "Yönetim ve Strateji",
+          "agent": "dept-01-management-strategy",
+          "score": 9,
+          "reasons": [
+            "company-core",
+            "type:web"
+          ]
+        },
+        {
+          "id": "finance",
+          "name": "Finans",
+          "agent": "dept-13-finance",
+          "score": 8,
+          "reasons": [
+            "maliyet"
+          ]
+        },
+        {
+          "id": "operations",
+          "name": "Operasyon",
+          "agent": "dept-12-operations",
+          "score": 8,
+          "reasons": [
+            "type:web"
+          ]
+        },
+        {
+          "id": "customer-experience",
+          "name": "Müşteri Departmanları",
+          "agent": "dept-11-customer-experience",
+          "score": 4,
+          "reasons": [
+            "success"
+          ]
+        },
+        {
+          "id": "rnd-innovation",
+          "name": "Ar-Ge ve İnovasyon",
+          "agent": "dept-05-rnd-innovation",
+          "score": 4,
+          "reasons": [
+            "arge"
+          ]
+        },
+        {
+          "id": "sales",
+          "name": "Satış",
+          "agent": "dept-10-sales",
+          "score": 4,
+          "reasons": [
+            "kanal"
+          ]
+        }
+      ],
+      "updated_at": "2026-07-24T11:20:43.670375+00:00"
+    },
+    {
+      "kind": "project",
+      "slug": "transcribe-tr",
+      "name": "Transcribe TR — Türkçe Altyazı ve Deşifre Motoru",
+      "path": "tasks/projects/transcribe-tr",
+      "objective": "Türkçe içerik üreticileri ve medya kuruluşları için yüksek doğruluk oranına sahip, aksan uyumlu yerel altyazı ve deşifre motoru geliştirmek.",
+      "desired_outcome": "Medya dosyalarından otomatik SRT/VTT üreten ve Premiere Pro zaman tüneline aktarabilen masaüstü araç.",
+      "type": "ai",
+      "priority": "P2",
+      "stage": "proposed",
+      "owner": "@korrayt",
+      "auto_execute": false,
+      "owner_approval": true,
+      "manifest_present": true,
+      "manifest_parse_error": null,
+      "source_hash": "13221a5d1113810b",
+      "file_count": 2,
+      "files": [
+        "BRIEF.md",
+        "PROJECT.toml"
+      ],
+      "departments": [
+        {
+          "id": "technology-software",
+          "name": "Yazılım ve Teknoloji",
+          "agent": "dept-03-technology-software",
+          "score": 26,
+          "reasons": [
+            "desktop",
+            "entegrasyon",
+            "masaüstü",
+            "mimari",
+            "platform",
+            "python",
+            "tauri",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "ai-data-analytics",
+          "name": "Yapay Zekâ, Veri ve Analitik",
+          "agent": "dept-04-ai-data-analytics",
+          "score": 18,
+          "reasons": [
+            "ai",
+            "type:ai",
+            "veri",
+            "yapay zekâ"
+          ]
+        },
+        {
+          "id": "product-planning",
+          "name": "Ürün ve Planlama",
+          "agent": "dept-02-product-planning",
+          "score": 14,
+          "reasons": [
+            "company-core",
+            "product",
+            "type:ai",
+            "ui"
+          ]
+        },
+        {
+          "id": "rnd-innovation",
+          "name": "Ar-Ge ve İnovasyon",
+          "agent": "dept-05-rnd-innovation",
+          "score": 12,
+          "reasons": [
+            "arge",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "design-creative",
+          "name": "Tasarım ve Kreatif",
+          "agent": "dept-06-design-creative",
+          "score": 10,
+          "reasons": [
+            "ses",
+            "video"
+          ]
+        },
+        {
+          "id": "marketing",
+          "name": "Pazarlama",
+          "agent": "dept-09-marketing",
+          "score": 10,
+          "reasons": [
+            "pr"
+          ]
+        },
+        {
+          "id": "people-culture",
+          "name": "İnsan ve Kültür",
+          "agent": "dept-14-people-culture",
+          "score": 10,
+          "reasons": [
+            "ik"
+          ]
+        },
+        {
+          "id": "security-trust",
+          "name": "Siber Güvenlik ve Güven",
+          "agent": "dept-08-security-trust",
+          "score": 10,
+          "reasons": [
+            "gizlilik",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "management-strategy",
+          "name": "Yönetim ve Strateji",
+          "agent": "dept-01-management-strategy",
+          "score": 9,
+          "reasons": [
+            "company-core",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "legal-compliance",
+          "name": "Hukuk ve Uyum",
+          "agent": "dept-15-legal-compliance",
+          "score": 8,
+          "reasons": [
+            "ip",
+            "uyum"
+          ]
+        },
+        {
+          "id": "operations",
+          "name": "Operasyon",
+          "agent": "dept-12-operations",
+          "score": 8,
+          "reasons": [
+            "type:ai"
+          ]
+        },
+        {
+          "id": "quality-testing",
+          "name": "Kalite ve Test",
+          "agent": "dept-07-quality-testing",
+          "score": 8,
+          "reasons": [
+            "type:ai"
+          ]
+        }
+      ],
+      "updated_at": "2026-07-24T11:20:43.676253+00:00"
+    },
+    {
+      "kind": "project",
+      "slug": "vision",
+      "name": "Vision — Semantik Çekim ve Görsel Arama Engine",
+      "path": "tasks/projects/vision",
+      "objective": "Büyük video projelerinde ve arşivlerde kullanıcıların aradığı kareyi ve çekimi doğal dille bulmasını sağlayan yerel görsel arama motoru geliştirmek.",
+      "desired_outcome": "Video karelerini indeksleyen, nesne ve sahne sorgularını arayan yerel masaüstü modülü.",
+      "type": "ai",
+      "priority": "P1",
+      "stage": "validating",
+      "owner": "@korrayt",
+      "auto_execute": false,
+      "owner_approval": true,
+      "manifest_present": true,
+      "manifest_parse_error": null,
+      "source_hash": "de9003c345b53231",
+      "file_count": 2,
+      "files": [
+        "BRIEF.md",
+        "PROJECT.toml"
+      ],
+      "departments": [
+        {
+          "id": "ai-data-analytics",
+          "name": "Yapay Zekâ, Veri ve Analitik",
+          "agent": "dept-04-ai-data-analytics",
+          "score": 22,
+          "reasons": [
+            "ai",
+            "embedding",
+            "type:ai",
+            "vector",
+            "yapay zekâ"
+          ]
+        },
+        {
+          "id": "product-planning",
+          "name": "Ürün ve Planlama",
+          "agent": "dept-02-product-planning",
+          "score": 22,
+          "reasons": [
+            "company-core",
+            "kullanıcı",
+            "product",
+            "type:ai",
+            "ui"
+          ]
+        },
+        {
+          "id": "design-creative",
+          "name": "Tasarım ve Kreatif",
+          "agent": "dept-06-design-creative",
+          "score": 20,
+          "reasons": [
+            "görsel",
+            "video"
+          ]
+        },
+        {
+          "id": "technology-software",
+          "name": "Yazılım ve Teknoloji",
+          "agent": "dept-03-technology-software",
+          "score": 18,
+          "reasons": [
+            "desktop",
+            "masaüstü",
+            "platform",
+            "python",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "rnd-innovation",
+          "name": "Ar-Ge ve İnovasyon",
+          "agent": "dept-05-rnd-innovation",
+          "score": 12,
+          "reasons": [
+            "arge",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "marketing",
+          "name": "Pazarlama",
+          "agent": "dept-09-marketing",
+          "score": 10,
+          "reasons": [
+            "pr"
+          ]
+        },
+        {
+          "id": "operations",
+          "name": "Operasyon",
+          "agent": "dept-12-operations",
+          "score": 10,
+          "reasons": [
+            "type:ai",
+            "üretim"
+          ]
+        },
+        {
+          "id": "people-culture",
+          "name": "İnsan ve Kültür",
+          "agent": "dept-14-people-culture",
+          "score": 10,
+          "reasons": [
+            "ik"
+          ]
+        },
+        {
+          "id": "security-trust",
+          "name": "Siber Güvenlik ve Güven",
+          "agent": "dept-08-security-trust",
+          "score": 10,
+          "reasons": [
+            "gizlilik",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "management-strategy",
+          "name": "Yönetim ve Strateji",
+          "agent": "dept-01-management-strategy",
+          "score": 9,
+          "reasons": [
+            "company-core",
+            "type:ai"
+          ]
+        },
+        {
+          "id": "quality-testing",
+          "name": "Kalite ve Test",
+          "agent": "dept-07-quality-testing",
+          "score": 8,
+          "reasons": [
+            "type:ai"
+          ]
+        },
+        {
+          "id": "legal-compliance",
+          "name": "Hukuk ve Uyum",
+          "agent": "dept-15-legal-compliance",
+          "score": 6,
+          "reasons": [
+            "etik",
+            "ip",
+            "izin"
+          ]
+        }
+      ],
+      "updated_at": "2026-07-24T11:20:43.681997+00:00"
     }
   ],
   "tasks": [],
-  "dispatch_count": 14
+  "dispatch_count": 70
 }

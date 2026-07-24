@@ -1,0 +1,157 @@
+{
+  "kind": "project",
+  "slug": "cutmate",
+  "name": "CutMate — AI Premiere Pro Editing Assistant",
+  "path": "tasks/projects/cutmate",
+  "objective": "Premiere Pro kurgucuları için kontrolden çıkmayan, güvenli, sekan ve marker önerileri sunan bağlam duyarlı yapay zekâ kurgu asistanı geliştirmek.",
+  "desired_outcome": "Adobe Premiere Pro UXP eklentisi ve yerel bridge bağlantısıyla çalışan; sekan kurgulama, marker koyma ve izin kontrollü işlem yapabilen masaüstü ve eklenti paketi.",
+  "type": "ai",
+  "priority": "P1",
+  "stage": "validating",
+  "owner": "@korrayt",
+  "auto_execute": false,
+  "owner_approval": true,
+  "manifest_present": true,
+  "manifest_parse_error": null,
+  "source_hash": "dcf794560a7a9254",
+  "file_count": 2,
+  "files": [
+    "BRIEF.md",
+    "PROJECT.toml"
+  ],
+  "departments": [
+    {
+      "id": "ai-data-analytics",
+      "name": "Yapay Zekâ, Veri ve Analitik",
+      "agent": "dept-04-ai-data-analytics",
+      "score": 30,
+      "reasons": [
+        "ai",
+        "llm",
+        "model",
+        "type:ai",
+        "veri",
+        "yapay zekâ"
+      ]
+    },
+    {
+      "id": "product-planning",
+      "name": "Ürün ve Planlama",
+      "agent": "dept-02-product-planning",
+      "score": 28,
+      "reasons": [
+        "company-core",
+        "kullanıcı",
+        "product",
+        "type:ai",
+        "ui",
+        "ux"
+      ]
+    },
+    {
+      "id": "technology-software",
+      "name": "Yazılım ve Teknoloji",
+      "agent": "dept-03-technology-software",
+      "score": 28,
+      "reasons": [
+        "api",
+        "entegrasyon",
+        "masaüstü",
+        "platform",
+        "react",
+        "tauri",
+        "type:ai",
+        "typescript"
+      ]
+    },
+    {
+      "id": "legal-compliance",
+      "name": "Hukuk ve Uyum",
+      "agent": "dept-15-legal-compliance",
+      "score": 20,
+      "reasons": [
+        "ip",
+        "izin",
+        "uyum"
+      ]
+    },
+    {
+      "id": "design-creative",
+      "name": "Tasarım ve Kreatif",
+      "agent": "dept-06-design-creative",
+      "score": 14,
+      "reasons": [
+        "kurgu",
+        "video"
+      ]
+    },
+    {
+      "id": "people-culture",
+      "name": "İnsan ve Kültür",
+      "agent": "dept-14-people-culture",
+      "score": 14,
+      "reasons": [
+        "ik",
+        "çalışan"
+      ]
+    },
+    {
+      "id": "rnd-innovation",
+      "name": "Ar-Ge ve İnovasyon",
+      "agent": "dept-05-rnd-innovation",
+      "score": 12,
+      "reasons": [
+        "arge",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "marketing",
+      "name": "Pazarlama",
+      "agent": "dept-09-marketing",
+      "score": 10,
+      "reasons": [
+        "pr"
+      ]
+    },
+    {
+      "id": "security-trust",
+      "name": "Siber Güvenlik ve Güven",
+      "agent": "dept-08-security-trust",
+      "score": 10,
+      "reasons": [
+        "güvenlik",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "management-strategy",
+      "name": "Yönetim ve Strateji",
+      "agent": "dept-01-management-strategy",
+      "score": 9,
+      "reasons": [
+        "company-core",
+        "type:ai"
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "Operasyon",
+      "agent": "dept-12-operations",
+      "score": 8,
+      "reasons": [
+        "type:ai"
+      ]
+    },
+    {
+      "id": "quality-testing",
+      "name": "Kalite ve Test",
+      "agent": "dept-07-quality-testing",
+      "score": 8,
+      "reasons": [
+        "type:ai"
+      ]
+    }
+  ],
+  "updated_at": "2026-07-24T11:20:43.654749+00:00"
+}

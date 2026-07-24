@@ -1,0 +1,149 @@
+{
+  "kind": "project",
+  "slug": "kreativecore-store",
+  "name": "Kreative Core Store — www.kreativecore.store Public Vitrin ve Dağıtım Kanalı",
+  "path": "tasks/projects/kreativecore-store",
+  "objective": "Kreative Core'un otonom şirket altyapısını, ürünlerini ve $0.00 maliyetli in-house ajan mimarisini kamuoyuna ve kullanıcılara sunan web platformunu canlıya almak.",
+  "desired_outcome": "kreativecore.store üzerinde yayınlanan şık, modern, responsive ve ürün indirme imkânı sunan web sitesi.",
+  "type": "web",
+  "priority": "P1",
+  "stage": "active",
+  "owner": "@korrayt",
+  "auto_execute": false,
+  "owner_approval": true,
+  "manifest_present": true,
+  "manifest_parse_error": null,
+  "source_hash": "fa7502d975c51956",
+  "file_count": 2,
+  "files": [
+    "BRIEF.md",
+    "PROJECT.toml"
+  ],
+  "departments": [
+    {
+      "id": "product-planning",
+      "name": "Ürün ve Planlama",
+      "agent": "dept-02-product-planning",
+      "score": 32,
+      "reasons": [
+        "company-core",
+        "kullanıcı",
+        "product",
+        "type:web",
+        "ui",
+        "ürün"
+      ]
+    },
+    {
+      "id": "technology-software",
+      "name": "Yazılım ve Teknoloji",
+      "agent": "dept-03-technology-software",
+      "score": 26,
+      "reasons": [
+        "github",
+        "javascript",
+        "mimari",
+        "mobil",
+        "platform",
+        "yazılım"
+      ]
+    },
+    {
+      "id": "ai-data-analytics",
+      "name": "Yapay Zekâ, Veri ve Analitik",
+      "agent": "dept-04-ai-data-analytics",
+      "score": 14,
+      "reasons": [
+        "ai",
+        "yapay zekâ"
+      ]
+    },
+    {
+      "id": "legal-compliance",
+      "name": "Hukuk ve Uyum",
+      "agent": "dept-15-legal-compliance",
+      "score": 14,
+      "reasons": [
+        "etik",
+        "ip",
+        "lisans",
+        "uyum"
+      ]
+    },
+    {
+      "id": "people-culture",
+      "name": "İnsan ve Kültür",
+      "agent": "dept-14-people-culture",
+      "score": 14,
+      "reasons": [
+        "ik",
+        "performans"
+      ]
+    },
+    {
+      "id": "marketing",
+      "name": "Pazarlama",
+      "agent": "dept-09-marketing",
+      "score": 10,
+      "reasons": [
+        "pr"
+      ]
+    },
+    {
+      "id": "management-strategy",
+      "name": "Yönetim ve Strateji",
+      "agent": "dept-01-management-strategy",
+      "score": 9,
+      "reasons": [
+        "company-core",
+        "type:web"
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "Finans",
+      "agent": "dept-13-finance",
+      "score": 8,
+      "reasons": [
+        "maliyet"
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "Operasyon",
+      "agent": "dept-12-operations",
+      "score": 8,
+      "reasons": [
+        "type:web"
+      ]
+    },
+    {
+      "id": "customer-experience",
+      "name": "Müşteri Departmanları",
+      "agent": "dept-11-customer-experience",
+      "score": 4,
+      "reasons": [
+        "success"
+      ]
+    },
+    {
+      "id": "rnd-innovation",
+      "name": "Ar-Ge ve İnovasyon",
+      "agent": "dept-05-rnd-innovation",
+      "score": 4,
+      "reasons": [
+        "arge"
+      ]
+    },
+    {
+      "id": "sales",
+      "name": "Satış",
+      "agent": "dept-10-sales",
+      "score": 4,
+      "reasons": [
+        "kanal"
+      ]
+    }
+  ],
+  "updated_at": "2026-07-24T11:20:43.670375+00:00"
+}
