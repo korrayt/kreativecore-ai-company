@@ -467,11 +467,20 @@ jobs:
         if: failure() && env.AUTO_DISPATCH == 'true' && env.TARGET != ''
         shell: bash
         run: |
-          gh label create "status:blocked"             --color "B60205"             --description "Automatic execution stopped and needs attention."             --force
+          gh label create "status:blocked" \
+            --color "B60205" \
+            --description "Automatic execution stopped and needs attention." \
+            --force
 
-          gh issue edit "$TARGET"             --remove-label "status:running"             --add-label "status:blocked" || true
+          gh issue edit "$TARGET" \
+            --remove-label "local-ai:auto" \
+            --remove-label "status:running" \
+            --remove-label "status:review" \
+            --add-label "status:blocked" || true
 
-          gh issue comment "$TARGET"             --body "Otomatik yürütme başarısız oldu. Actions logunun incelenmesi gerekiyor." || true
+          gh issue comment "$TARGET" \
+            --body "Otomatik yürütme başarısız oldu. local-ai:auto etiketleme durduruldu ve issue status:blocked durumuna alındı. Actions logunun incelenmesi gerekmektedir." || true
+
 
       - name: Stop local model
         if: always()
