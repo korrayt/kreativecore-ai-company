@@ -9,6 +9,131 @@ class ProtocolError(ValueError):
     pass
 
 
+FORBIDDEN_MARKERS = (
+    "===== FILE:",
+    "SELECTED REPOSITORY CONTEXT:",
+    "PROJECT CONTEXT:",
+    '"kind": "project"',
+    '"departments": [',
+)
+
+
+def _check_string(val: Any, name: str, min_len: int = 1) -> str:
+    if not isinstance(val, str):
+        raise ProtocolError(f"Department JSON field '{name}' must be a string")
+    cleaned = val.strip()
+    if len(cleaned) < min_len:
+        raise ProtocolError(f"Department JSON field '{name}' is too short (min {min_len} chars)")
+    if "```" in cleaned or "~~~" in cleaned:
+        raise ProtocolError(f"Department JSON field '{name}' must not contain Markdown code fences")
+    for marker in FORBIDDEN_MARKERS:
+        if marker in cleaned:
+            raise ProtocolError(f"Department JSON field '{name}' contains copied repository context: {marker}")
+    return cleaned
+
+
+def _check_string_list(val: Any, name: str, min_items: int = 1) -> list[str]:
+    if not isinstance(val, list):
+        raise ProtocolError(f"Department JSON field '{name}' must be a list")
+    items: list[str] = []
+    for idx, item in enumerate(val):
+        item_str = _check_string(item, f"{name}[{idx}]", min_len=3)
+        items.append(item_str)
+    if len(items) < min_items:
+        raise ProtocolError(f"Department JSON field '{name}' must contain at least {min_items} item(s)")
+    return items
+
+
+def validate_department_json(payload: dict[str, Any]) -> dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise ProtocolError("Department payload must be a JSON object")
+
+    objective = _check_string(payload.get("objective"), "objective", min_len=15)
+    required_inputs = _check_string_list(payload.get("required_inputs"), "required_inputs", min_items=1)
+    dependencies = _check_string_list(payload.get("dependencies"), "dependencies", min_items=1)
+    acceptance_criteria = _check_string_list(payload.get("acceptance_criteria"), "acceptance_criteria", min_items=1)
+    risks = _check_string_list(payload.get("risks"), "risks", min_items=1)
+
+    next_task = payload.get("next_task")
+    if not isinstance(next_task, dict):
+        raise ProtocolError("Department JSON field 'next_task' must be an object")
+
+    task_title = _check_string(next_task.get("title"), "next_task.title", min_len=5)
+    task_desc = _check_string(next_task.get("description"), "next_task.description", min_len=15)
+    task_deliverable = _check_string(next_task.get("deliverable"), "next_task.deliverable", min_len=5)
+    task_done_when = _check_string_list(next_task.get("done_when"), "next_task.done_when", min_items=1)
+
+    return {
+        "objective": objective,
+        "required_inputs": required_inputs,
+        "dependencies": dependencies,
+        "acceptance_criteria": acceptance_criteria,
+        "risks": risks,
+        "next_task": {
+            "title": task_title,
+            "description": task_desc,
+            "deliverable": task_deliverable,
+            "done_when": task_done_when,
+        },
+    }
+
+
+def render_department_markdown(data: dict[str, Any], department_name: str) -> str:
+    obj = data["objective"]
+    inputs_md = "\n".join(f"- {item}" for item in data["required_inputs"])
+    deps_md = "\n".join(f"- {item}" for item in data["dependencies"])
+    criteria_md = "\n".join(f"- {item}" for item in data["acceptance_criteria"])
+    risks_md = "\n".join(f"- {item}" for item in data["risks"])
+
+    next_task = data["next_task"]
+    task_title = next_task["title"]
+    task_desc = next_task["description"]
+    task_deliv = next_task["deliverable"]
+    done_md = "\n".join(f"- {item}" for item in next_task["done_when"])
+
+    return f"""# {department_name} Raporu
+
+## Amaç
+
+{obj}
+
+## Gerekli Girdiler
+
+{inputs_md}
+
+## Bağımlılıklar
+
+{deps_md}
+
+## Kabul Kriterleri
+
+{criteria_md}
+
+## Riskler
+
+{risks_md}
+
+## Sonraki Uygulanabilir Görev
+
+### Görev
+
+{task_title}
+
+### Açıklama
+
+{task_desc}
+
+### Teslimat
+
+{task_deliv}
+
+### Tamamlanma Koşulları
+
+{done_md}
+""".strip() + "\n"
+
+
+
 def extract_json(text: str) -> dict[str, Any]:
     stripped = text.strip()
     candidates = [stripped]

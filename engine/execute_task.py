@@ -12,9 +12,11 @@ from engine.github_api import GitHub
 from engine.json_protocol import (
     ProtocolError,
     extract_json,
+    render_department_markdown,
     validate_code_actions,
+    validate_department_json,
 )
-from engine.runtime import client, read_agent, repo_context
+from engine.runtime import _registry, client, read_agent, repo_context
 from engine.safety import apply_actions
 
 
@@ -425,6 +427,160 @@ The local model did not return a usable document.
     }
 
 
+def strict_department_payload(
+    *,
+    root: Path,
+    llm: Any,
+    agent: str,
+    agent_prompt: str,
+    title: str,
+    request: str,
+    context: str,
+    max_tokens: int,
+) -> dict[str, Any]:
+    project_path = project_path_from_request(request)
+    if not project_path:
+        raise ProtocolError(
+            "Could not determine the project path for department scope validation"
+        )
+
+    target = document_target(agent, project_path)
+    if not target:
+        raise ProtocolError(
+            f"No safe document target exists for department agent: {agent}"
+        )
+
+    entry = _registry(root).get(agent, {})
+    dept_name = str(entry.get("name") or agent)
+
+    schema_instruction = """
+Return strictly ONE compact JSON object with no Markdown code fences and no extra prose outside JSON:
+
+{
+  "objective": "Detailed department objective (min 15 chars)",
+  "required_inputs": [
+    "Input 1"
+  ],
+  "dependencies": [
+    "Dependency 1"
+  ],
+  "acceptance_criteria": [
+    "Criterion 1"
+  ],
+  "risks": [
+    "Risk 1"
+  ],
+  "next_task": {
+    "title": "Actionable task title",
+    "description": "Clear description of the work",
+    "deliverable": "Specific file or report deliverable",
+    "done_when": [
+      "Completion condition 1"
+    ]
+  }
+}
+
+STRICT CONSTRAINTS:
+- JSON format only.
+- Do NOT wrap response in ```json code fences.
+- Do NOT copy raw repository context or markers like ===== FILE: into text fields.
+- Every list must contain at least 1 meaningful item.
+- Do not invent facts or leave placeholders like TBD or N/A.
+"""
+
+    compact_context = context[:2000]
+
+    raw = llm.chat(
+        system=agent_prompt + "\n\n" + schema_instruction,
+        user=f"""
+TASK TITLE:
+{title}
+
+TASK REQUEST:
+{request}
+
+SELECTED PROJECT CONTEXT:
+{compact_context}
+""",
+        max_tokens=min(max_tokens, 700),
+        temperature=0.1,
+    )
+
+    try:
+        data = extract_json(raw)
+        validated_data = validate_department_json(data)
+        markdown_content = render_department_markdown(validated_data, dept_name)
+
+        return {
+            "summary": f"{agent} department analysis completed successfully.",
+            "actions": [
+                {
+                    "op": "write",
+                    "path": target,
+                    "content": markdown_content,
+                }
+            ],
+            "notes": [
+                "Department report generated deterministically from verified JSON.",
+                "Human review is required before merge.",
+            ],
+        }
+    except (ProtocolError, ValueError) as exc:
+        first_error = str(exc)
+
+    repair_raw = llm.chat(
+        system=(
+            "Repair malformed department output into one valid JSON object. "
+            "Return JSON only. No Markdown code fences."
+        ),
+        user=f"""
+Required JSON schema:
+{{
+  "objective": "...",
+  "required_inputs": ["..."],
+  "dependencies": ["..."],
+  "acceptance_criteria": ["..."],
+  "risks": ["..."],
+  "next_task": {{
+    "title": "...",
+    "description": "...",
+    "deliverable": "...",
+    "done_when": ["..."]
+  }}
+}}
+
+BROKEN OUTPUT:
+{raw[:3000]}
+""",
+        max_tokens=600,
+        temperature=0,
+    )
+
+    try:
+        data = extract_json(repair_raw)
+        validated_data = validate_department_json(data)
+        markdown_content = render_department_markdown(validated_data, dept_name)
+
+        return {
+            "summary": f"{agent} department analysis completed after automatic JSON repair.",
+            "actions": [
+                {
+                    "op": "write",
+                    "path": target,
+                    "content": markdown_content,
+                }
+            ],
+            "notes": [
+                "Department report generated deterministically after JSON repair.",
+                "Human review is required before merge.",
+            ],
+        }
+    except (ProtocolError, ValueError) as exc:
+        raise ProtocolError(
+            f"Department agent {agent} JSON protocol failed twice. Initial error: {first_error}; Repair error: {exc}"
+        ) from exc
+
+
 def execute(
     root: Path,
     reference: str,
@@ -452,7 +608,8 @@ def execute(
     }
 
     if agent.startswith("dept-"):
-        payload = document_fallback(
+        payload = strict_department_payload(
+            root=root,
             llm=llm,
             agent=agent,
             agent_prompt=read_agent(
@@ -462,9 +619,7 @@ def execute(
             title=title,
             request=request,
             context=context,
-            raw_output=(
-                "Department document-only mode"
-            ),
+            max_tokens=model.max_tokens_code,
         )
 
     else:
