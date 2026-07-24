@@ -1,0 +1,28 @@
+[project]
+name = "Kreative Core Store — www.kreativecore.store Public Vitrin ve Dağıtım Kanalı"
+objective = "Kreative Core'un otonom şirket altyapısını, ürünlerini ve $0.00 maliyetli in-house ajan mimarisini kamuoyuna ve kullanıcılara sunan web platformunu canlıya almak."
+desired_outcome = "kreativecore.store üzerinde yayınlanan şık, modern, responsive ve ürün indirme imkânı sunan web sitesi."
+type = "web"
+priority = "P1"
+stage = "active"
+owner = "@korrayt"
+departments = ["auto"]
+auto_analyze = false
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Kullanıcılar, içerik üreticileri, yazılımcılar ve yapay zekâ meraklıları."
+problem = "Kreative Core ürünlerinin ve otonom yapısının topluluğa sunulacağı şeffaf, modern ve güvenilir tek bir vitrin ihtiyacı."
+constraints = "Web sitesi yüksek performanslı, mobil uyumlu ve modern estetiğe sahip olmalıdır."
+success_signal = "Web sitesinin tarayıcıda sorunsuz açılması ve tüm ürün kartlarının doğru sergilenmesi."
+
+[product]
+product_name = "Kreative Core Store"
+positioning = "Kreative Core ekosisteminin resmi kamuya açık dağıtım ve vitrin platformu."
+core_value = "Şeffaflık, modern estetik, $0.00 AI maliyeti ve ürün erişimi."
+first_platform = "Web"
+distribution = "GitHub Pages / Custom Domain (kreativecore.store)"
+
+[technical]
+preferred_stack = ["HTML5", "CSS3", "JavaScript", "Vite / Static Web"]

@@ -1,0 +1,28 @@
+[project]
+name = "Transcribe TR — Türkçe Altyazı ve Deşifre Motoru"
+objective = "Türkçe içerik üreticileri ve medya kuruluşları için yüksek doğruluk oranına sahip, aksan uyumlu yerel altyazı ve deşifre motoru geliştirmek."
+desired_outcome = "Medya dosyalarından otomatik SRT/VTT üreten ve Premiere Pro zaman tüneline aktarabilen masaüstü araç."
+type = "ai"
+priority = "P2"
+stage = "proposed"
+owner = "@korrayt"
+departments = ["auto"]
+auto_analyze = false
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Türkçe yayın yapan YouTubelar, podcasterlar, film yapımcıları ve kurumlar."
+problem = "Türkçe deşifre servisleri ya harici ücretlidir ya da aksan ve jargon kelimelerde düşük doğruluk vermektedir."
+constraints = "Yerel Whisper mimarisi ve Türkçe terim kütüphanesi kullanılacaktır."
+success_signal = "10 dakikalık Türkçe ses kaydı 2 dakika içinde eksiksiz SRT çıktısına dönüşür."
+
+[product]
+product_name = "Transcribe TR"
+positioning = "Türkçe medyaya özel yüksek doğrulukta yerel deşifre çözümü."
+core_value = "Doğruluk, hız, Türkçe jargon desteği ve gizlilik."
+first_platform = "Windows Desktop"
+distribution = "Installer Package"
+
+[technical]
+preferred_stack = ["Python", "Faster-Whisper", "FFmpeg", "Tauri"]
