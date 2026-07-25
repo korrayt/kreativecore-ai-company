@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-07-24T11:20:43.686636+00:00",
+  "updated_at": "2026-07-25T07:21:58.001399+00:00",
   "projects": [
     {
       "kind": "project",
@@ -157,7 +157,7 @@
           ]
         }
       ],
-      "updated_at": "2026-07-24T11:20:43.654749+00:00"
+      "updated_at": "2026-07-25T07:21:57.984845+00:00"
     },
     {
       "kind": "project",
@@ -174,12 +174,12 @@
       "owner_approval": true,
       "manifest_present": true,
       "manifest_parse_error": null,
-      "source_hash": "60800e1fd5a021e7",
+      "source_hash": "57e770378b058367",
       "file_count": 3,
       "files": [
         "BRIEF.md",
-        "department/technology-software/plan.md",
-        "PROJECT.toml"
+        "PROJECT.toml",
+        "department/technology-software/plan.md"
       ],
       "departments": [
         {
@@ -339,7 +339,7 @@
           ]
         }
       ],
-      "updated_at": "2026-07-24T11:20:43.664992+00:00"
+      "updated_at": "2026-07-25T07:21:57.992648+00:00"
     },
     {
       "kind": "project",
@@ -488,7 +488,7 @@
           ]
         }
       ],
-      "updated_at": "2026-07-24T11:20:43.670375+00:00"
+      "updated_at": "2026-07-25T07:21:57.995420+00:00"
     },
     {
       "kind": "project",
@@ -639,7 +639,7 @@
           ]
         }
       ],
-      "updated_at": "2026-07-24T11:20:43.676253+00:00"
+      "updated_at": "2026-07-25T07:21:57.997969+00:00"
     },
     {
       "kind": "project",
@@ -791,7 +791,7 @@
           ]
         }
       ],
-      "updated_at": "2026-07-24T11:20:43.681997+00:00"
+      "updated_at": "2026-07-25T07:21:58.000588+00:00"
     }
   ],
   "tasks": [],
