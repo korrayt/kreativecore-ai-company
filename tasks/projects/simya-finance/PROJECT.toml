@@ -1,0 +1,20 @@
+[project]
+name = "Simya Algoritmik Finans Motoru"
+objective = "Gelişmiş finansal modelleme, simülasyon ve portföy optimizasyonu motoru."
+desired_outcome = "Yerel çalışan simülasyon motoru."
+type = "algofinance"
+priority = "P2"
+stage = "draft"
+owner = "@korrayt"
+deadline = ""
+language = "tr"
+departments = ["auto"]
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Finansal modelleyiciler"
+problem = "Karmaşık finansal hesaplamaların otomatize edilmesi"
+constraints = "0$ Cost Guarantee, TypeScript/Python standard"
+success_signal = "Yüksek doğrulukta portföy simülasyonu"
+budget_note = "$0.00 infrastructure cost"

@@ -1,0 +1,20 @@
+[project]
+name = "Gözcü Güvenlik ve İzleme Modülü"
+objective = "Sistem güvenliği, yetkisiz erişim tespiti ve olay günlüğü izleme sistemi."
+desired_outcome = "Gerçek zamanlı uyarı veren, 0$ maliyetli güvenlik paneli."
+type = "security"
+priority = "P1"
+stage = "development"
+owner = "@korrayt"
+deadline = ""
+language = "tr"
+departments = ["auto"]
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Sistem yöneticileri ve AI ajans altyapısı"
+problem = "Güvenlik ihlallerinin geç fark edilmesi"
+constraints = "0$ Cost Guarantee, TypeScript/Python standard"
+success_signal = "Sıfır sızıntı ve anlık uyarı mekanizması"
+budget_note = "$0.00 infrastructure cost"

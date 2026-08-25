@@ -1,0 +1,20 @@
+[project]
+name = "AI Video Lab & Media Toolkit"
+objective = "Yapay zeka ajanı destekli otomatik video düzenleme, altyazı ve medya üretim araçları."
+desired_outcome = "Kodla video düzenleme ve medya otomasyon hattı."
+type = "media_ai"
+priority = "P2"
+stage = "draft"
+owner = "@korrayt"
+deadline = ""
+language = "tr"
+departments = ["auto"]
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "İçerik üreticileri, pazarlama ekipleri"
+problem = "Video kurgu süreçlerinin manuel ve uzun sürmesi"
+constraints = "0$ Cost Guarantee, TypeScript/Python standard"
+success_signal = "Tek komutla otomatik MP4 çıktı üretimi"
+budget_note = "$0.00 infrastructure cost"

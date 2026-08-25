@@ -1,0 +1,20 @@
+[project]
+name = "Ambliyopi Dijital Terapötik Platformu"
+objective = "Göz tembelliği (ambliyopi) tedavisine yönelik AR/VR tabanlı oyunlaştırılmış dijital terapötik yazılımı."
+desired_outcome = "Klinik onaylı, AR destekli mobil/VR egzersiz modülleri."
+type = "medical_dtx"
+priority = "P1"
+stage = "development"
+owner = "@korrayt"
+deadline = ""
+language = "tr"
+departments = ["auto"]
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Pediatrik ve yetişkin ambliyopi hastaları, göz doktorları"
+problem = "Geleneksel göz kapama tedavisinin hasta uyumunu düşürmesi"
+constraints = "0$ Cost Guarantee, TypeScript/Python standard"
+success_signal = "Günlük 20 dk düzenli kullanım ve görme keskinliği artışı"
+budget_note = "$0.00 infrastructure cost"

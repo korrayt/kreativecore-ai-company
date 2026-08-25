@@ -1,0 +1,20 @@
+[project]
+name = "Trade Coin Finansal Analiz Platformu"
+objective = "Kripto para piyasaları için teknik analiz, indikatör ve sinyal takip sistemi."
+desired_outcome = "Algoritmik sinyal paneli ve grafik analitik modülü."
+type = "fintech"
+priority = "P2"
+stage = "draft"
+owner = "@korrayt"
+deadline = ""
+language = "tr"
+departments = ["auto"]
+auto_execute = false
+requires_owner_approval = true
+
+[context]
+target_user = "Kripto yatırımcıları ve analistler"
+problem = "Piyasa sinyallerinin takibinde zaman kaybı"
+constraints = "0$ Cost Guarantee, TypeScript/Python standard"
+success_signal = "Doğrulanmış sinyal başarısı"
+budget_note = "$0.00 infrastructure cost"
