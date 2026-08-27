@@ -1,49 +1,29 @@
-# Kreative Core — GitHub AI Company
+﻿# KreativeCore AI Company
 
-Tamamı GitHub üzerinde çalışan, kişisel bilgisayar gerektirmeyen ve ücretli bir yapay zekâ
-API'sine bağlanmayan şirket işletim sistemi.
+> KreativeCore — Yapay zeka destekli yaratıcı teknoloji şirketi.
 
-## Sistem ne yapar?
+## Hakkında
 
-- `tasks/projects/` altındaki her klasörü proje kabul eder.
-- `tasks/inbox/` altındaki her klasör veya Markdown dosyasını görev kabul eder.
-- Günlük tarama; portföy, görev kuyruğu, departman dağılımı ve GitHub issue'ları üretir.
-- Analiz, planlama, kodlama ve PR incelemesi GitHub-hosted runner üzerinde çalışır.
-- Aynı reponun private GitHub Release alanında saklanan açık model ve `llama.cpp` kullanılır.
-- Copilot, OpenAI, Anthropic veya token başına ücretli başka bir model servisi kullanılmaz.
-- AI ana dala doğrudan yazmaz; ayrı branch ve pull request açar.
+KreativeCore, video prodüksiyon, içerik üretimi ve yapay zeka altyapısı alanlarında faaliyet gösteren bir yaratıcı teknoloji şirketidir.
 
-## İlk kurulum
+## Ekosistem
 
-1. Yeni bir **private** GitHub repo oluştur.
-2. Bu paketteki `UPLOAD_TO_NEW_REPO` klasörünün içeriğini repo köküne yükle.
-3. `QUICKSTART.md` adımlarını uygula.
-4. Önce **Bootstrap AI Engine**, ardından **Engine Health Check** workflow'unu çalıştır.
+| Bileşen | Açıklama |
+|---|---|
+| [kreativecore-store](https://github.com/korrayt/kreativecore-store) | Resmi ürün ve hizmet mağazası |
+| [kreativecore-transcribe-tr](https://github.com/korrayt/kreativecore-transcribe-tr) | Türkçe ses transkripsiyon motoru |
+| [kreativecore-sync](https://github.com/korrayt/kreativecore-sync) | Premiere Pro senkronizasyon eklentisi |
+| [core-writer](https://github.com/korrayt/core-writer) | AI destekli Markdown yazı stüdyosu |
+| [giraffication-agency](https://github.com/korrayt/giraffication-agency) | Video prodüksiyon ajansı |
 
-## Akış
+## Teknoloji Stack
 
-```text
-Telefon / GitHub
-      ↓
-Project ve task klasörleri
-      ↓
-Daily Intake & Routing
-      ↓
-20 departman + 33 ajan profili
-      ↓
-Mobile Company Control
-      ↓
-GitHub-hosted runner
-      ↓
-Repo Release içindeki açık model + llama.cpp
-      ↓
-Analiz / kod / test / PR
-      ↓
-Telefondan inceleme ve merge
-```
+- **AI**: Ollama, LM Studio, Faster-Whisper, Runway Gen-2
+- **Video**: DaVinci Resolve, Premiere Pro, After Effects
+- **Backend**: Python, FastAPI, Node.js, Express
+- **Frontend**: TypeScript, React, HTML5
+- **Firmware**: ESP32-C3, BLE, Swift iOS
 
-## Gerçekçi sınır
+---
 
-Standart private GitHub runner küçük bir CPU modeline uygundur. Bu sistem, güçlü ticari coding
-agent'lar kadar tutarlı olmayabilir. Güvenli JSON protokolü, sabit test komutları ve PR onayı bu
-nedenle zorunludur.
+*© 2024 KreativeCore · Koray Taşan · MIT Lisansı*
